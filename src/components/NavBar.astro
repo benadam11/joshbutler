@@ -1,0 +1,36 @@
+<nav class="flex justify-between p-10 w-full mx-auto">
+  <a href="/">Joshua Ryan Butler</a>
+  <div class="flex flex-end gap-4">
+    <a class="nav-link" href="/about">About</a>
+    <a class="nav-link" href="/books">Books</a>
+    <a class="nav-link" href="/speaking">Speaking</a>
+    <a class="nav-link" href="/blog">Blog</a>
+  </div>
+</nav>
+
+<style>
+  nav {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  nav > a {
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+  }
+
+  a.active {
+    text-decoration: underline wavy var(--gold) !important;
+    text-underline-offset: 0.5rem;
+    text-decoration-color: var(--gold);
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    const { pathname } = window.location;
+    const { pathname: path } = link;
+    if (path === pathname || (path.length > 1 && pathname.includes(path))) {
+      link.classList.add("active");
+    }
+  });
+</script>
