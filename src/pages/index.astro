@@ -5,6 +5,7 @@ import HeroSection from "../components/HeroSection.astro";
 import RecentPosts from "../components/RecentPosts.astro";
 import SpeakingEngagements from "../components/SpeakingEngagements.astro";
 import Layout from "../layouts/Layout.astro";
+import { posts } from "./blog.astro";
 
 const books = [
   {
@@ -33,18 +34,7 @@ const books = [
   },
 ];
 
-const recentPosts = [
-  { url: "/posts/breath-beloved", title: "Breath, Beloved" },
-  {
-    url: "/posts/your-faith-has-healed-you",
-    title: "Your Faith Has Healed You",
-  },
-  { url: "/posts/on-the-altar", title: "On The Altar" },
-  {
-    url: "/posts/creativity-in-worship-pt-2",
-    title: "Creativity in Worship: a matrix (2 of 2)",
-  },
-];
+const recentPosts = posts.slice(0, 4);
 ---
 
 <Layout title="Josh Butler">

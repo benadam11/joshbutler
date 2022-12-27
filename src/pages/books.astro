@@ -1,0 +1,44 @@
+---
+import BookItem from "../components/BookItem.astro";
+import EmailWidget from "../components/EmailWidget.astro";
+import TableOfContents from "../components/TableOfContents.astro";
+import Page from "../layouts/Page.astro";
+const title = "Books";
+
+export const books = [
+  {
+    id: "beautiful-union",
+    src: "/images/beautiful-union-bg.jpg",
+    title: "Beautiful Union",
+    description:
+      "It's time to better understand God’s redemptive vision for humanity's greatest obsession. In this bold book, award-winning author Joshua Ryan Butler helps listeners rediscover the beauty of the traditional Christian theology of sex by framing it within the greater things it is designed to point to.",
+  },
+  {
+    id: "beautiful-union-study-guide",
+    src: "",
+    title: "Beautiful Union (Study Guide)",
+    description: "",
+  },
+  {
+    id: "the-persuing-god",
+    src: "",
+    title: "The Pursuing God",
+    description: "",
+  },
+  {
+    id: "the-skeletons-in-gods-closet",
+    src: "/images/the-skeletons-in-gods-closet-bg.jpg",
+    title: "The Skeletons in God's Closet",
+    description:
+      "It's time to better understand God’s redemptive vision for humanity's greatest obsession. In this bold book, award-winning author Joshua Ryan Butler helps listeners rediscover the beauty of the traditional Christian theology of sex by framing it within the greater things it is designed to point to.",
+  },
+];
+---
+
+<Page title={title}>
+  <TableOfContents slot="aside" links={books} title="Books" />
+  <EmailWidget slot="aside" />
+  <div class="grid gap-[120px]">
+    {books.map((book) => <BookItem {...book} />)}
+  </div>
+</Page>

@@ -1,16 +1,43 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import EmailWidget from "../components/EmailWidget.astro";
+import PostLinks from "../components/PostLinks.astro";
+import TableOfContents from "../components/TableOfContents.astro";
+import Page from "../layouts/Page.astro";
+import { books } from "./books.astro";
+
+export const posts = [
+  { url: "/posts/breath-beloved", title: "Breath, Beloved", date: "3/24/2019" },
+  {
+    url: "/posts/your-faith-has-healed-you",
+    title: "Your Faith Has Healed You",
+    date: "3/3/2019",
+  },
+  { url: "/posts/on-the-altar", title: "On The Altar", date: "1/8/2019" },
+  {
+    url: "/posts/skin-in-the-game",
+    title: "Skin In The Game",
+    date: "12/3/2018",
+  },
+  {
+    url: "/posts/creativity-in-worship-pt-2",
+    title: "Longing For Home",
+    date: "11/6/2018",
+  },
+  {
+    url: "choose-your-master",
+    title: "Choose Your Master",
+    date: "10/10/2018",
+  },
+  {
+    url: "why-were-leaving-portland",
+    title: "Why We're Leaving Portland",
+    date: "9/26/2018",
+  },
+];
 ---
 
-<Layout title="Blog">
-	<main class="font-body text-2xl font-medium">
-		<h1>Blog</h1>
-	</main>
-</Layout>
-
-<style>
-  main {
-    margin: auto;
-    max-width: 95ch;
-  }
-</style>
+<Page title="Blog">
+  <TableOfContents slot="aside" links={books} title="Books" />
+  <EmailWidget slot="aside" />
+  <PostLinks posts={posts} />
+</Page>

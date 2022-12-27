@@ -1,0 +1,30 @@
+---
+posts: [
+  {
+    url: 'https://www.youtube.com/watch?v=WIVyPAcxi_g',
+    title: 'You Should Believe in Jesus',
+    date: '6/24/2019',
+  },
+  {
+    url: 'https://www.youtube.com/watch?v=WIVyPAcxi_g',
+    title: 'You Should Believe in Jesus',
+    date: '6/24/2019',
+  },
+  {
+    url: 'https://www.youtube.com/watch?v=WIVyPAcxi_g',
+    title: 'You Should Believe in Jesus',
+    date: '6/24/2019',
+  }
+]
+---
+
+import Page from '../layouts/Page.astro';
+import PostLinks from '../components/PostLinks.astro';
+
+<Page title="Speaking">
+  ## Thanks for considering having me speak!
+  I love to help people encounter Christ in a fresh way. Please feel free to check out some recent sample messages and let me know if I can help explore crafting a message that’s the right fit for your event, by contacting me at: joshbutler@redemptionaz.com.
+  #### Sample Speaking Messages
+  <PostLinks posts={frontmatter.posts}/>
+  % TODO - contact form %
+</Page>

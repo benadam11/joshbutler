@@ -1,0 +1,23 @@
+---
+const options = [
+  { store: "Amazon", url: "https://www.amazon.com" },
+  { store: "Books A Million", url: "https://www.booksamillion.com" },
+  { store: "Barnes & Noble", url: "https://www.barnesandnoble.com" },
+];
+---
+
+<div>
+  <h4 class="text-lg mb-8">Where To Buy</h4>
+  <ul class="font-sans text-sm font-normal border-t !ml-0">
+    {
+      options.map((option) => {
+        return (
+          <li class="flex justify-between items-center border-b p-4">
+            <span>{option.store}</span>
+            <a href={option.url}>Buy Here</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
