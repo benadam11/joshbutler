@@ -1,5 +1,6 @@
 ---
-import NavBar from '../components/NavBar.astro';
+import Footer from "../components/Footer.astro";
+import NavBar from "../components/NavBar.astro";
 export interface Props {
   title: string;
 }
@@ -29,9 +30,17 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
-    <NavBar />
-    <slot />
+  <body class="text-2xl">
+    <header class="bg-[var(--bg-alt)]">
+      <NavBar />
+      <div class="outer-container">
+        <slot name="header" />
+      </div>
+    </header>
+    <div class="font-serif font-medium outer-container">
+      <slot />
+    </div>
+    <Footer />
   </body>
 </html>
 <style is:global>
@@ -43,11 +52,16 @@ const { title } = Astro.props;
     --text-muted: #f2f2f2;
     --text-gray: #333333;
     --text-default: #000;
-    --gold: #D1A15F;
+    --gold: #d1a15f;
+    --light-blue: #f2f3fc;
   }
   html {
     font-family: "Crimson Text", serif;
     background-color: #f6f6f6;
+  }
+
+  * {
+    scroll-behavior: smooth;
   }
 
   h1 {
@@ -94,5 +108,28 @@ const { title } = Astro.props;
     font-size: 1.5rem;
     line-height: 1.5;
     margin: 0;
+  }
+
+  b {
+    font-weight: bold;
+  }
+
+  .outer-container {
+    @apply mx-auto w-full max-w-[1120px] px-8;
+  }
+
+  .dot-bg {
+    background: radial-gradient(
+          2px 2px at 50% 50%,
+          rgba(255, 255, 255, 0.2) 50%,
+          transparent 50%
+        )
+        top / 12px 12px repeat,
+      radial-gradient(
+          4px 4px at 50% 50%,
+          rgba(0, 0, 0, 0.1) 50%,
+          transparent 50%
+        )
+        top / 12px 12px repeat;
   }
 </style>

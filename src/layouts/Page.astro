@@ -1,0 +1,35 @@
+---
+import Layout from "./Layout.astro";
+const title = Astro.props.title || Astro.props.frontmatter.title || "Untitled";
+---
+
+<Layout title={title}>
+  <h1 slot="header" class="py-[120px]">{title}</h1>
+  <div class="grid md:grid-cols-[1fr_300px] gap-20 py-20">
+    <main class="page-content">
+      <slot />
+    </main>
+    <aside>
+      <slot name="aside" />
+    </aside>
+  </div>
+</Layout>
+
+<style is:global>
+  .page-content {
+    @apply grid gap-10;
+  }
+
+  .page-content a {
+    @apply  underline;
+  }
+
+  .page-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+
+  .page-content h2 {
+    margin-bottom: 2rem;
+  }
+</style>

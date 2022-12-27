@@ -1,0 +1,26 @@
+---
+const { title, date, src, alt } = Astro.props;
+---
+
+<figure class="text-sm text-center">
+  <img width={253} height={443} src={src} alt={alt} />
+  <figcaption class="font-sans text-sm text-center grid gap-2">
+    <span>{title}</span>
+    <span class="opacity-50 text-xs">{date}</span>
+  </figcaption>
+</figure>
+
+<style>
+  figure {
+    margin: 0;
+    padding: 0;
+  }
+  figure img {
+    display: inline-block;
+    /* object-fit: cover; */
+    object-position: center;
+    box-shadow: 0 0 32px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+    border-radius: 2px;
+  }
+</style>

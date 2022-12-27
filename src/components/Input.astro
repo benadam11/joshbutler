@@ -1,0 +1,9 @@
+---
+const { type, ...rest } = Astro.props || "text";
+---
+
+<input
+  class="appearance-none border-b border-black bg-[rgba(0,0,0,.02)] px-4 py-2 text-base outline-none w-full"
+  type={type}
+  {...rest}
+/>

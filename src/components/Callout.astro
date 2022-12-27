@@ -1,0 +1,34 @@
+---
+import EmailSignup from "./EmailSignup.astro";
+---
+
+<section class="dot-bg p-6 lg:p-20 -mx-10 lg:-mx-20 my-20">
+  <article
+    id="latest-work"
+    class="bg-[var(--light-blue)] p-8 lg:p-20 w-full grid md:grid-cols-[250px_1fr] gap-20"
+  >
+    <figure class="order-2 md:order-1">
+      <img
+        width="400px"
+        class="w-full h-auto"
+        src="/images/beautiful-union.jpg"
+        alt="Beautiful Union"
+      />
+    </figure>
+    <div class="w-full grid grid-rows-[1fr_auto] items-between order-1 md:order-2">
+      <div>
+        <h3 class="font-light mb-8">
+          My Latest Book: <b>Beautiful Union</b>
+        </h3>
+        <p class="text-xl">
+          How God’s vision for sex points us to the good, unlocks the true, and
+          (sort of) explains everything.
+        </p>
+      </div>
+      <div class="grid gap-8 mt-6">
+        <p class="text-lg">Download <b>Chapter 1</b> for free</p>
+        <EmailSignup />
+      </div>
+    </div>
+  </article>
+</section>

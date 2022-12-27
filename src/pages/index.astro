@@ -1,23 +1,99 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Book from "../components/Book.astro";
+import Callout from "../components/Callout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import RecentPosts from "../components/RecentPosts.astro";
+import SpeakingEngagements from "../components/SpeakingEngagements.astro";
+import Layout from "../layouts/Layout.astro";
+
+const books = [
+  {
+    title: "Beautiful Union",
+    alt: "Beautiful Union Book Cover",
+    date: "2022",
+    src: "/images/beautiful-union.jpg",
+  },
+  {
+    title: "Beautiful Union (Study Guide)",
+    alt: "Beautiful Union Study Guide Book Cover",
+    date: "2022",
+    src: "/images/beautiful-union-study-guide.jpg",
+  },
+  {
+    title: "The Pursuing God",
+    alt: "The Pursuing God Book Cover",
+    date: "2016",
+    src: "/images/the-pursuing-god.jpg",
+  },
+  {
+    title: "The Skeletons in God's Closet",
+    alt: "The Skeletons in God's Closet Book Cover",
+    date: "2015",
+    src: "/images/the-skeletons-in-gods-closet.jpg",
+  },
+];
+
+const recentPosts = [
+  { url: "/posts/breath-beloved", title: "Breath, Beloved" },
+  {
+    url: "/posts/your-faith-has-healed-you",
+    title: "Your Faith Has Healed You",
+  },
+  { url: "/posts/on-the-altar", title: "On The Altar" },
+  {
+    url: "/posts/creativity-in-worship-pt-2",
+    title: "Creativity in Worship: a matrix (2 of 2)",
+  },
+];
 ---
 
 <Layout title="Josh Butler">
-	<main class="font-body text-2xl font-medium">
-		<h1>Welcome to Astro.</h1>
-		<h2>Here is an H2</h2>
-		<h3>Here is an H3</h3>
-		<h4>Here is an H4</h4>
-		<h5>Here is an H5</h5>
-		<h6>Here is an H6</h6>
-		<p>Learn more about Astro in the <a href="https://docs.astro.build">documentation</a>.</p>
-	</main>
+  <HeroSection slot="header" />
+  <main>
+    <Callout />
+    <section>
+      <div class="mb-8">
+        <h4 class="mb-8">More Books</h4>
+        <p class="max-w-[55ch]">
+          I love shifting paradigms, to help people who wrestle with tough
+          topics of the Christian faith by confronting popular caricatures and
+          replacing them with the real thing.
+        </p>
+      </div>
+
+      <ul class="flex gap-20 items-center overflow-auto">
+        {
+          books.map((book) => (
+            <li class="block">
+              <Book {...book} />
+            </li>
+          ))
+        }
+        <li>
+          <a
+            href="/books"
+            class="grid gap-4 place-items-center text-xl font-body"
+          >
+            <span
+              class="w-[48px] h-[48px] rounded-full border border-[var(--black)] flex items-center justify-center -rotate-90"
+            >
+              <img width="12px" height="12px" src="/images/down-arrow.svg" />
+            </span>
+            <span class="whitespace-nowrap text-center">Learn More</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <section class="py-20 grid md:grid-cols-2 gap-20">
+      <RecentPosts posts={recentPosts} />
+      <SpeakingEngagements />
+    </section>
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		max-width: 55ch;
-	}
+  figure img {
+    width: 100%;
+    box-shadow: 16px 16px 0px 0px var(--gold);
+  }
 </style>
-
