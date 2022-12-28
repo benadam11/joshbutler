@@ -24,7 +24,7 @@ const { links, title } = Astro.props;
 </style>
 
 <script is:inline>
-  const links = document.querySelectorAll('a[href^="#"]');
+  const links = document.querySelectorAll('a[href*="#"]');
   const opts = { threshold: 1, rootMargin: "0px 0px -70% 0px " };
 
   links?.[0]?.classList.add("active");
@@ -38,7 +38,7 @@ const { links, title } = Astro.props;
 
   const observerCallback = (entries) => {
     const id = entries.find((entry) => entry.isIntersecting)?.target?.id;
-    resetActiveElement(document.querySelector(`a[href="#${id}"`));
+    resetActiveElement(document.querySelector(`a[href$="#${id}"`));
   };
 
   const observer = new IntersectionObserver(observerCallback, opts);
@@ -50,7 +50,8 @@ const { links, title } = Astro.props;
   links.forEach((el) => {
     el.onclick = function (e) {
       e.preventDefault();
-      let target = document.querySelector(el.getAttribute("href"));
+      const selector = el.getAttribute("href").split("#")[1];
+      let target = document.getElementById(selector);
       let offsetPosition = target.offsetTop - 100;
       resetActiveElement(e.target);
       window.scrollTo({
