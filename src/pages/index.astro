@@ -5,7 +5,7 @@ import HeroSection from "../components/HeroSection.astro";
 import RecentPosts from "../components/RecentPosts.astro";
 import SpeakingEngagements from "../components/SpeakingEngagements.astro";
 import Layout from "../layouts/Layout.astro";
-import { posts } from "./blog.astro";
+import { getPosts } from "../utils/getPosts";
 
 const books = [
   {
@@ -34,7 +34,7 @@ const books = [
   },
 ];
 
-const recentPosts = posts.slice(0, 4);
+const {recentPosts} = await getPosts()
 ---
 
 <Layout title="Josh Butler">
