@@ -4,15 +4,16 @@ import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
-// import cloudflare from "@astrojs/cloudflare";
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
   integrations: [tailwind(), mdx()],
-  // adapter: cloudflare({
-  //   mode: "directory"
-  // })
+  adapter: cloudflare({
+    mode: "directory"
+  })
 });

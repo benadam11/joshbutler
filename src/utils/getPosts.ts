@@ -4,9 +4,15 @@ export async function getPosts() {
   ).then((res) => res.json());
 
   return {
-    posts: posts.map((post: any) => ({ ...post, title: post.title.rendered })),
-    recentPosts: posts
-      .slice(0, 4)
-      .map((post: any) => ({ ...post, title: post.title.rendered })),
+    posts: posts.map((post: any) => ({
+      ...post,
+      title: post.title.rendered,
+      content: post.content.rendered,
+    })),
+    recentPosts: posts.slice(0, 4).map((post: any) => ({
+      ...post,
+      title: post.title.rendered,
+      content: post.content.rendered,
+    })),
   };
 }

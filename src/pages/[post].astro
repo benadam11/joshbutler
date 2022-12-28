@@ -2,26 +2,17 @@
 import EmailWidget from "../components/EmailWidget.astro";
 import RecentPosts from "../components/RecentPosts.astro";
 import Page from "../layouts/Page.astro";
-import { getPosts } from "../utils/getPosts";
+import getPost from "../utils/getPost";
 import sanitize from "../utils/sanitize";
 
-export async function getStaticPaths() {
-  const { posts, recentPosts } = await getPosts();
+const slug = Astro.params.post || "";
+const post = await getPost(slug);
 
-  const paths = posts.map((post: any) => ({
-    params: { post: post.slug },
-    props: {
-      ...post,
-      content: post.content.rendered,
-      recentPosts,
-    },
-  }));
-
-  return paths;
+if (!post) {
+  return Astro.response(404, "Not Found");
 }
 
-
-const { title, content, recentPosts, date } = Astro.props;
+const { title, content, date, recentPosts } = post;
 ---
 
 <Page date={date} title={sanitize(title)}>
