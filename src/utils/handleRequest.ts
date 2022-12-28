@@ -1,5 +1,5 @@
 export interface Caches {
-  default: {
+  default?: {
     put(request: Request | string, response: Response): Promise<undefined>;
     match(request: Request | string): Promise<Response | undefined>;
   };
@@ -11,11 +11,14 @@ export default async function handleRequest(
   request: Request,
   ctx: any
 ): Promise<Response | undefined> {
-  let cache = caches.default;
-  let response = await cache.match(request);
-  if (response) {
-    console.log("CACHE HIT");
-    return response;
+  let cache = caches?.default;
+  let response;
+  if(cache) {
+    response = await cache.match(request);
+    if (response) {
+      console.log("CACHE HIT");
+      return response;
+    }
   }
 
   try {
@@ -33,7 +36,9 @@ export default async function handleRequest(
     });
 
     response.headers.delete("pragma");
-    ctx.waitUntil(cache.put(request, response.clone()));
+    if(cache) {
+      ctx.waitUntil(cache.put(request, response.clone()));
+    }
     return response;
   } catch (e) {
     console.log(e);

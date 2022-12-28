@@ -22,3 +22,20 @@ import Input from "./Input.astro";
     </button>
   </div>
 </form>
+<script is:inline>
+  function cookieExists(name) {
+    const cookies = document.cookie;
+    const cookieArray = cookies.split(";");
+    return cookieArray.some((cookie) => cookie.trim().startsWith(`${name}=`));
+  }
+
+  if (cookieExists("emailsignupstatus")) {
+    let form = document.querySelector(".email-signup-wrapper");
+    let parent = form.parentNode;
+    let el = document.createElement("p");
+    el.classList.add("text-xl", "font-body");
+    el.innerText = "Thanks for signing up! 🎉";
+    parent.appendChild(el)
+    parent.removeChild(form);
+  }
+</script>
