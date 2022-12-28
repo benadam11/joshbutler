@@ -1,19 +1,35 @@
 ---
+import sanitize from "../utils/sanitize";
 const { posts } = Astro.props;
 ---
 
 <ul class="!ml-0 grid gap-10">
-  <li class="grid grid-cols-[140px_1fr] font-sans  text-base">
+  <li class="grid grid-cols-[140px_1fr] font-sans text-base">
     <span class="font-sans">Date</span>
     <span>Title</span>
   </li>
   {
     posts.map(
-      ({ date, url, title }: { date: string; url: string; title: string }) => {
+      ({
+        date,
+        title,
+        slug,
+      }: {
+        date: string;
+        slug: string;
+        title: string;
+      }) => {
         return (
           <li class="grid grid-cols-[140px_1fr] items-baseline">
-            <time class="font-sans text-base" datetime={new Date(date).toISOString()}>{date}</time>
-            <a href={url}>{title}</a>
+            <time
+              class="font-sans text-base"
+              datetime={new Date(date).toISOString()}
+            >
+              {new Date(date).toLocaleDateString("en-US")}
+            </time>
+            <a href={slug}>
+              {sanitize(title)}
+            </a>
           </li>
         );
       }

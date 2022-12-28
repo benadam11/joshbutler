@@ -1,0 +1,53 @@
+---
+import EmailWidget from "../components/EmailWidget.astro";
+import RecentPosts from "../components/RecentPosts.astro";
+import Page from "../layouts/Page.astro";
+import { getPosts } from "../utils/getPosts";
+import sanitize from "../utils/sanitize";
+
+export async function getStaticPaths() {
+  const { posts, recentPosts } = await getPosts();
+
+  const paths = posts.map((post: any) => ({
+    params: { post: post.slug },
+    props: {
+      ...post,
+      content: post.content.rendered,
+      recentPosts,
+    },
+  }));
+
+  return paths;
+}
+
+
+const { title, content, recentPosts, date } = Astro.props;
+---
+
+<Page date={date} title={sanitize(title)}>
+  <RecentPosts slot="aside" posts={recentPosts} />
+  <EmailWidget slot="aside" />
+  <div class="post-content" set:html={content} />
+</Page>
+
+<style is:global>
+  .post-content * + * {
+    @apply mt-6;
+  }
+
+  .iframe-video {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+</style>

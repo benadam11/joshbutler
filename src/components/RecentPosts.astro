@@ -1,4 +1,6 @@
 ---
+import sanitize from "../utils/sanitize";
+
 const { posts } = Astro.props;
 ---
 
@@ -6,13 +8,15 @@ const { posts } = Astro.props;
   <h4>Recent Posts</h4>
   <ul class="grid gap-6">
     {
-      posts.map(({ url, title }: { url: string; title: string }) => (
-        <li>
-          <a class="underline" href={url}>
-            {title}
-          </a>
-        </li>
-      ))
+      posts.map(
+        ({ slug, title }: { slug: string; title: string; }) => (
+          <li>
+            <a class="underline text-xl" href={slug}>
+              {sanitize(title)}
+            </a>
+          </li>
+        )
+      )
     }
   </ul>
   <a class="text-xl font-bold underline" href="/blog">More</a>

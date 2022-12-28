@@ -1,11 +1,24 @@
 ---
 import Layout from "./Layout.astro";
-const title = Astro.props.title || Astro.props.frontmatter.title || "Untitled";
+const title =
+  Astro.props?.title || Astro.props.frontmatter?.title || "Untitled";
+const date = Astro.props?.date || Astro.props.frontmatter?.date;
 ---
 
 <Layout title={title}>
-  <h1 slot="header" class="py-[120px]">{title}</h1>
-  <div class="grid md:grid-cols-[1fr_300px] gap-20 py-20">
+  <div slot="header" class="py-[120px]">
+    {
+      date && (
+        <p class="text-base font-sans mb-4">
+          <time datetime={new Date(date).toISOString()}>
+            {new Date(date).toLocaleDateString("en-US")}
+          </time>
+        </p>
+      )
+    }
+    <h1>{title}</h1>
+  </div>
+  <div class="grid md:grid-cols-[1fr_300px] gap-20 py-20 min-w-0">
     <main class="page-content">
       <slot />
     </main>
@@ -17,11 +30,11 @@ const title = Astro.props.title || Astro.props.frontmatter.title || "Untitled";
 
 <style is:global>
   .page-content {
-    @apply grid gap-10;
+    @apply grid gap-10 min-w-[0px];
   }
 
   .page-content a {
-    @apply  underline;
+    @apply underline;
   }
 
   .page-content ul {
@@ -30,6 +43,19 @@ const title = Astro.props.title || Astro.props.frontmatter.title || "Untitled";
   }
 
   .page-content h2 {
+    margin-top: 2rem;
     margin-bottom: 2rem;
+    @apply text-2xl;
+  }
+
+  .page-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    @apply text-2xl;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    @apply font-serif font-medium italic my-8;
   }
 </style>

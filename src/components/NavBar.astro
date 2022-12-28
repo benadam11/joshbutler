@@ -13,7 +13,7 @@
     font-size: 1.25rem;
     font-weight: bold;
   }
-  
+
   nav > a {
     font-family: "Rubik", sans-serif;
     font-weight: bold;
@@ -30,6 +30,7 @@
   document.querySelectorAll(".nav-link").forEach((link) => {
     const { pathname } = window.location;
     const { pathname: path } = link;
+    console.log(path)
     if (path === pathname || (path.length > 1 && pathname.includes(path))) {
       link.classList.add("active");
     }
