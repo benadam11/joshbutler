@@ -76,9 +76,10 @@ async function setup() {
   init(yogaInit);
 }
 
-setup();
+
 
 export const get: APIRoute = async () => {
+  await setup();
   const svg = await satori(markup() as any, {
     fonts: [
       {
