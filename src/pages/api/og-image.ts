@@ -87,12 +87,6 @@ export const get: APIRoute = async () => {
           "https://github.com/googlefonts/rubik/raw/main/fonts/ttf/Rubik-Bold.ttf"
         ).then((res) => res.arrayBuffer()),
       },
-      {
-        name: "Crimson Text",
-        data: await fetch(
-          "https://github.com/googlefonts/Crimson/blob/master/fonts/ttf/CrimsonText-Regular.ttf"
-        ).then((res) => res.arrayBuffer()),
-      },
     ],
     height,
     width,

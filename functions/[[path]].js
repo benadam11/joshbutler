@@ -542,7 +542,7 @@ Rename your file to \`[...page].astro\` or customize the param name via the \`pa
       <div class="date">${t}</div>
       <div class="title">${e}</div>
     </div>
-    <img src="http://127.0.0.1:8788/images/josh-og.jpg" />
+    <img src="https://joshbutler.pages.dev/images/josh-og.jpg" />
   </div>
 `,f6=630,d6=1200;async function I6(){let[e]=await Promise.all([ph(await fetch("https://unpkg.com/yoga-wasm-web/dist/yoga.wasm").then(t=>t.arrayBuffer())),Eh(fetch("https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm"))]);Vp(e)}I6();var p6=async()=>{let e=await gh(g6(),{fonts:[{name:"Roboto",data:await fetch("https://github.com/googlefonts/rubik/raw/main/fonts/ttf/Rubik-Bold.ttf").then(r=>r.arrayBuffer())}],height:f6,width:d6}),i=new Qh(e,{fitTo:{mode:"original"}}).render();return new Response(i.asPng(),{headers:{"content-type":"image/png"}})},h6=Object.freeze(Object.defineProperty({__proto__:null,get:p6},Symbol.toStringTag,{value:"Module"})),C6=Object.freeze(Object.defineProperty({__proto__:null},Symbol.toStringTag,{value:"Module"}));async function B6(e,t){let i=await Sl(t);if(!i)return null;let r=i.posts.find(n=>n.slug===e);return r?{...r,recentPosts:i.recentPosts}:null}var D6=tt("/Users/benadam/dev/joshbutler/src/pages/[post].astro","","file:///Users/benadam/dev/joshbutler/"),pB=et(async(e,t,i)=>{let r=e.createAstro(D6,t,i);r.self=pB;let n=r.params.post||"",a=await B6(n,$u(r.request));if(!a)return r.response(404,"Not Found");let{title:o,content:s,date:u,recentPosts:A}=a;return Ee`${qe(e,"Page",vn,{date:u,title:Fl(o)},{aside:()=>Ee`${qe(e,"RecentPosts",xl,{slot:"aside",posts:A})}${qe(e,"EmailWidget",Oa,{slot:"aside"})}`,default:()=>Ee`${at(e)}<div class="post-content">${zu(s)}</div>`})}
 
