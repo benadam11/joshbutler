@@ -56,7 +56,7 @@ const markup = (
       <div class="date">${date}</div>
       <div class="title">${title}</div>
     </div>
-    <img src="http://127.0.0.1:8788/images/josh-og.jpg" />
+    <img src="https://joshbutler.pages.dev/images/josh-og.jpg" />
   </div>
 `;
 
