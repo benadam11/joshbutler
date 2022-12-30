@@ -69,6 +69,7 @@ export const get: APIRoute = async ({ request }) => {
     initWasm(fetch("https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm"));
   } catch(e) {
     console.log(e);
+    return new Response("Failed to initialize resvg", { status: 500 });
   }
 
   try {
@@ -80,6 +81,7 @@ export const get: APIRoute = async ({ request }) => {
     init(yoga);
   } catch(e) {
     console.log(e);
+    return new Response("Failed to initilize Yoga", { status: 500 });
   }
   
   try {
