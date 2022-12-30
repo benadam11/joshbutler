@@ -3,6 +3,7 @@ import initYoga from "yoga-wasm-web";
 import { initWasm, Resvg } from "@resvg/resvg-wasm";
 import type { APIRoute } from "astro";
 import { html } from "satori-html";
+import { getRuntime } from "@astrojs/cloudflare/runtime";
 
 const markup = (
   title: string = "Hi, I’m Josh. Welcome to my website.",
@@ -76,10 +77,10 @@ async function setup() {
   init(yogaInit);
 }
 
-
-
-export const get: APIRoute = async () => {
-  await setup();
+export const get: APIRoute = async ({request}) => {
+  const cf = getRuntime(request);
+  cf.waitUntil(setup());
+  console.log(cf)
   const svg = await satori(markup() as any, {
     fonts: [
       {
