@@ -3,7 +3,6 @@ import initYoga from "yoga-wasm-web";
 import { initWasm, Resvg } from "@resvg/resvg-wasm";
 import type { APIRoute } from "astro";
 import { html } from "satori-html";
-import { getRuntime } from "@astrojs/cloudflare/runtime";
 
 const markup = (
   title: string = "Hi, I’m Josh. Welcome to my website.",
@@ -64,47 +63,55 @@ const markup = (
 const height = 630;
 const width = 1200;
 
-async function setup() {
-  const [yogaInit] = await Promise.all([
-    initYoga(
-      await fetch("https://unpkg.com/yoga-wasm-web/dist/yoga.wasm").then(
-        (res) => res.arrayBuffer()
+
+export const get: APIRoute = async ({ request }) => {
+  try {
+    initWasm(fetch("https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm"));
+  } catch(e) {
+    console.log(e);
+  }
+
+  try {
+    const yoga = await initYoga(
+      await fetch("https://unpkg.com/yoga-wasm-web/dist/yoga.wasm").then((res) =>
+        res.arrayBuffer()
       )
-    ),
-    initWasm(fetch("https://unpkg.com/@resvg/resvg-wasm/index_bg.wasm")),
-  ]);
-
-  init(yogaInit);
-  console.log("setup complete");
-}
-
-export const get: APIRoute = async ({request}) => {
-  await setup();
-  console.log("call satori")
-  const svg = await satori(markup() as any, {
-    fonts: [
-      {
-        name: "Roboto",
-        data: await fetch(
-          "https://github.com/googlefonts/rubik/raw/main/fonts/ttf/Rubik-Bold.ttf"
-        ).then((res) => res.arrayBuffer()),
+    );
+    init(yoga);
+  } catch(e) {
+    console.log(e);
+  }
+  
+  try {
+    const svg = await satori(markup() as any, {
+      fonts: [
+        {
+          name: "Roboto",
+          data: await fetch(
+            "https://github.com/googlefonts/rubik/raw/main/fonts/ttf/Rubik-Bold.ttf"
+          ).then((res) => res.arrayBuffer()),
+        },
+      ],
+      height,
+      width,
+    });
+  
+    const resvg = new Resvg(svg, {
+      fitTo: {
+        mode: "original",
       },
-    ],
-    height,
-    width,
-  });
-
-  const resvg = new Resvg(svg, {
-    fitTo: {
-      mode: "original",
-    },
-  });
-
-  const image = resvg.render();
-
-  return new Response(image.asPng(), {
-    headers: {
-      "content-type": "image/png",
-    },
-  });
+    });
+  
+    const image = resvg.render();
+  
+    return new Response(image.asPng(), {
+      headers: {
+        "content-type": "image/png",
+      },
+    });
+  } catch(e) {
+    console.log(e);
+    return new Response("Error", { status: 500 });
+  }
+  
 };
