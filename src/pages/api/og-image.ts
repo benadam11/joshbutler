@@ -116,4 +116,5 @@ export const get: APIRoute = async ({ request }) => {
     return new Response("Error", { status: 500 });
   }
   
+  return new Response("Error", { status: 500 });
 };
