@@ -75,12 +75,12 @@ async function setup() {
   ]);
 
   init(yogaInit);
+  console.log("setup complete");
 }
 
 export const get: APIRoute = async ({request}) => {
-  const cf = getRuntime(request);
-  cf.waitUntil(setup());
-  console.log(cf)
+  await setup();
+  console.log("call satori")
   const svg = await satori(markup() as any, {
     fonts: [
       {
