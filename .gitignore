@@ -23,4 +23,5 @@ pnpm-debug.log*
 wrangler.toml
 
 # dont store og images in git
-public/meta/
+public/meta/*
+!public/meta/home.png
