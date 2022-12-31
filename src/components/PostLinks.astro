@@ -1,5 +1,4 @@
 ---
-import sanitize from "../utils/sanitize";
 const { posts } = Astro.props;
 ---
 
@@ -27,8 +26,8 @@ const { posts } = Astro.props;
             >
               {new Date(date).toLocaleDateString("en-US")}
             </time>
-            <a href={slug}>
-              {sanitize(title)}
+            <a href={`/${slug}`}>
+              {title}
             </a>
           </li>
         );

@@ -7,6 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "node ./scripts/generate-og-images.js && astro build",
+    "localBuild": "astro build",
     "preview": "wrangler pages dev ./dist --compatibility-date=2022-12-20",
     "astro": "astro"
   },
