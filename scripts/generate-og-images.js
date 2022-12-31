@@ -56,12 +56,7 @@ function getPostData() {
     });
 }
 
-async function generateOgImage({ title, slug, date }) {
-  const img = await promises.readFile(
-    new URL("./images/josh-og.jpg", import.meta.url),
-    { encoding: "base64", width: 630, height: 623 }
-  );
-
+async function generateOgImage({ title, slug, date, image }) {
   const svg = await satori(
     html` <style>
         div {
@@ -115,7 +110,7 @@ async function generateOgImage({ title, slug, date }) {
         <img
           width="${630}px"
           height="${623}px"
-          src="data:image/jpg;base64, ${img}"
+          src="data:image/jpg;base64, ${image}"
         />
       </div>`,
     {
@@ -150,7 +145,11 @@ async function generateOgImage({ title, slug, date }) {
 async function main() {
   const t = performance.now();
   const posts = await getPostData();
-  await Promise.all(posts.map((post) => generateOgImage(post)));
+  const image = await promises.readFile(
+    new URL("./images/josh-og.jpg", import.meta.url),
+    { encoding: "base64", width: 630, height: 623 }
+  );
+  await Promise.all(posts.map((post) => generateOgImage({ ...post, image })));
   console.info("✨ Done in", performance.now() - t, "ms");
 }
 
