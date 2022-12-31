@@ -1,10 +1,8 @@
 import { promises } from "fs";
-import { join, dirname } from "path";
 import { performance } from "perf_hooks";
 import { Resvg } from "@resvg/resvg-js";
 import { html } from "satori-html";
 import satori from "satori";
-import { fileURLToPath } from "url";
 import sanitizeHtml from "sanitize-html";
 // fetch-polyfill.js
 import fetch, {
@@ -37,9 +35,6 @@ if (!globalThis.fetch) {
 const height = 630;
 const width = 1200;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 function sanitize(text) {
   return sanitizeHtml(text, {
     textFilter: (text) => text.replace(/&amp;/g, "&"),
@@ -62,6 +57,11 @@ function getPostData() {
 }
 
 async function generateOgImage({ title, slug, date }) {
+  const img = await promises.readFile(
+    new URL("./images/josh-og.jpg", import.meta.url),
+    { encoding: "base64", width: 630, height: 623 }
+  );
+
   const svg = await satori(
     html` <style>
         div {
@@ -112,7 +112,11 @@ async function generateOgImage({ title, slug, date }) {
           <div class="date">${new Date(date).toLocaleDateString("en-US")}</div>
           <div class="title">${title}</div>
         </div>
-        <img src="https://joshbutler.pages.dev/images/josh-og.jpg" />
+        <img
+          width="${630}px"
+          height="${623}px"
+          src="data:image/jpg;base64, ${img}"
+        />
       </div>`,
     {
       fonts: [
@@ -130,7 +134,6 @@ async function generateOgImage({ title, slug, date }) {
     }
   );
 
-  const t = performance.now();
   const resvg = new Resvg(svg, {
     fitTo: {
       mode: "original",
