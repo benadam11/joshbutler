@@ -1,11 +1,23 @@
 ---
 import Layout from "./Layout.astro";
+export interface Props {
+  title: string;
+  date?: string;
+  description: string;
+  slug: string;
+}
+
 const title =
   Astro.props?.title || Astro.props.frontmatter?.title || "Untitled";
 const date = Astro.props?.date || Astro.props.frontmatter?.date;
+const description =
+  Astro.props?.description ||
+  Astro.props.frontmatter?.description ||
+  "No description";
+const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description} slug={slug}>
   <div slot="header" class="py-[120px]">
     {
       date && (

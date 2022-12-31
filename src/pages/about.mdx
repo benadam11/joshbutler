@@ -5,7 +5,7 @@ import Page from '../layouts/Page.astro'
 import BioWidget from '../components/BioWidget.astro'
 import EmailWidget from '../components/EmailWidget.astro'
 
-<Page title={frontmatter.title}>
+<Page title={frontmatter.title} description="A little bit about me" slug="about">
   <div slot="aside" class="grid gap-20">
     <BioWidget />
     <EmailWidget />

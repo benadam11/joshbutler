@@ -36,10 +36,13 @@ const books = [
 ];
 
 const postData = await getPosts(getRuntime(Astro.request));
-const recentPosts = postData?.recentPosts || [];
+const recentPosts = postData[0].recentPosts;
+const title = "Joshua Ryan Butler";
+const description =
+  "I’m a pastor of Redemption Tempe in Arizona, the author of Beautiful Union (and a few other books), and a fellow with The Keller Center for Cultural Apologetics.";
 ---
 
-<Layout title="Josh Butler">
+<Layout title={title} description={description} slug="home">
   <HeroSection slot="header" />
   <main>
     <Callout />

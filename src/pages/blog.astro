@@ -1,5 +1,4 @@
 ---
-import { getRuntime } from "@astrojs/cloudflare/runtime";
 import EmailWidget from "../components/EmailWidget.astro";
 import PostLinks from "../components/PostLinks.astro";
 import TableOfContents from "../components/TableOfContents.astro";
@@ -7,11 +6,10 @@ import Page from "../layouts/Page.astro";
 import { getPosts } from "../utils/getPosts";
 import { books } from "./books.astro";
 
-const postData = await getPosts(getRuntime(Astro.request));
-const posts = postData?.posts || [];
+const posts = await getPosts();
 ---
 
-<Page title="Blog">
+<Page title="Blog" description="Joshua Ryan Butler - Blog" slug="blog">
   <TableOfContents slot="aside" links={books} title="Books" />
   <EmailWidget slot="aside" />
   <PostLinks posts={posts} />

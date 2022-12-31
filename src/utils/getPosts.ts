@@ -1,23 +1,23 @@
+import { convert } from "html-to-text";
 import handleRequest from "./handleRequest";
+import sanitize from "./sanitize";
 
-export async function getPosts(ctx: any) {
-  const posts = await handleRequest(getPostsRequest(), ctx).then((res) =>
-    res?.json()
-  );
-  if (posts) {
-    return {
-      posts: posts.map((post: any) => ({
-        ...post,
-        title: post.title.rendered,
-        content: post.content.rendered,
-      })),
-      recentPosts: posts.slice(0, 4).map((post: any) => ({
-        ...post,
-        title: post.title.rendered,
-        content: post.content.rendered,
-      })),
-    };
-  }
+export async function getPosts(ctx?: any) {
+  let fetcher = ctx
+    ? handleRequest(getPostsRequest(), ctx)
+    : fetch(getPostsRequest());
+  const posts = await fetcher.then((res) => res?.json());
+  return posts.map((post: any) => ({
+    ...post,
+    title: sanitize(post.title.rendered),
+    description: convert(post.excerpt.rendered),
+    content: sanitize(post.content.rendered),
+    recentPosts: posts.slice(0, 4).map((post: any) => ({
+      ...post,
+      title: sanitize(post.title.rendered),
+      content: sanitize(post.content.rendered),
+    })),
+  }));
 }
 
 export function getPostsRequest() {

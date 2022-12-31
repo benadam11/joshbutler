@@ -1,22 +1,21 @@
 ---
-import { getRuntime } from "@astrojs/cloudflare/runtime";
 import EmailWidget from "../components/EmailWidget.astro";
 import RecentPosts from "../components/RecentPosts.astro";
 import Page from "../layouts/Page.astro";
-import getPost from "../utils/getPost";
-import sanitize from "../utils/sanitize";
+import { getPosts } from "../utils/getPosts";
 
-const slug = Astro.params.post || "";
-const post = await getPost(slug, getRuntime(Astro.request));
+export const getStaticPaths = async () => {
+  const posts = await getPosts();
+  return posts.map((post: any) => ({
+    params: { post: post.slug },
+    props: { ...post },
+  }));
+};
 
-if (!post) {
-  return Astro.response(404, "Not Found");
-}
-
-const { title, content, date, recentPosts } = post;
+const { title, description, content, date, recentPosts, slug } = Astro.props;
 ---
 
-<Page date={date} title={sanitize(title)}>
+<Page date={date} title={title} description={description} slug={slug}>
   <RecentPosts slot="aside" posts={recentPosts} />
   <EmailWidget slot="aside" />
   <div class="post-content" set:html={content} />
