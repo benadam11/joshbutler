@@ -47,17 +47,19 @@ const { links, title } = Astro.props;
     observer.observe(el);
   });
 
-  links.forEach((el) => {
-    el.onclick = function (e) {
-      e.preventDefault();
-      const selector = el.getAttribute("href").split("#")[1];
-      let target = document.getElementById(selector);
-      let offsetPosition = target.offsetTop - 100;
-      resetActiveElement(e.target);
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    };
-  });
+  if (window.location.href.includes("books")) {
+    links.forEach((el) => {
+      el.onclick = function (e) {
+        e.preventDefault();
+        const selector = el.getAttribute("href").split("#")[1];
+        let target = document.getElementById(selector);
+        let offsetPosition = target.offsetTop - 100;
+        resetActiveElement(e.target);
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      };
+    });
+  }
 </script>

@@ -10,24 +10,28 @@ import { getPosts } from "../utils/getPosts";
 
 const books = [
   {
+    id: "beautiful-union",
     title: "Beautiful Union",
     alt: "Beautiful Union Book Cover",
     date: "2022",
     src: "/images/beautiful-union.jpg",
   },
   {
+    id: "beautiful-union-study-guide",
     title: "Beautiful Union (Study Guide)",
     alt: "Beautiful Union Study Guide Book Cover",
     date: "2022",
     src: "/images/beautiful-union-study-guide.jpg",
   },
   {
+    id: "the-pursuing-god",
     title: "The Pursuing God",
     alt: "The Pursuing God Book Cover",
     date: "2016",
     src: "/images/the-pursuing-god.jpg",
   },
   {
+    id: "the-skeletons-in-gods-closet",
     title: "The Skeletons in God's Closet",
     alt: "The Skeletons in God's Closet Book Cover",
     date: "2015",
@@ -45,9 +49,11 @@ const description =
 <Layout title={title} description={description} slug="home">
   <HeroSection slot="header" />
   <main>
-    <Callout />
-    <section>
-      <div class="mb-8">
+    <section class="outer-container">
+      <Callout />
+    </section>
+    <section class="relative h-[680px]">
+      <div class="mb-8 outer-container">
         <h4 class="mb-8">More Books</h4>
         <p class="max-w-[55ch]">
           I love shifting paradigms, to help people who wrestle with tough
@@ -55,31 +61,36 @@ const description =
           replacing them with the real thing.
         </p>
       </div>
-
-      <ul class="flex gap-20 items-center overflow-auto">
-        {
-          books.map((book) => (
-            <li class="block">
-              <Book {...book} />
-            </li>
-          ))
-        }
-        <li>
-          <a
-            href="/books"
-            class="grid gap-4 place-items-center text-xl font-body"
-          >
-            <span
-              class="w-[48px] h-[48px] rounded-full border border-[var(--black)] flex items-center justify-center -rotate-90"
+      <div
+        class="absolute w-full bottom-0 overflow-auto lg:pl-[calc((100vw_-_(1120px_-_4rem))_/_2)] pt-40"
+      >
+        <ul class="inline-flex gap-20 items-center w-full">
+          {
+            books.map((book) => (
+              <li class="block shrink-0">
+                <a href={`/books#${book.id}`} class="block">
+                  <Book {...book} />
+                </a>
+              </li>
+            ))
+          }
+          <li class="pr-10">
+            <a
+              href="/books"
+              class="grid gap-4 place-items-center text-xl font-body"
             >
-              <img width="12px" height="12px" src="/images/down-arrow.svg" />
-            </span>
-            <span class="whitespace-nowrap text-center">Learn More</span>
-          </a>
-        </li>
-      </ul>
+              <span
+                class="w-[48px] h-[48px] rounded-full border border-[var(--black)] flex items-center justify-center -rotate-90"
+              >
+                <img width="12px" height="12px" src="/images/down-arrow.svg" />
+              </span>
+              <span class="whitespace-nowrap text-center">Learn More</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </section>
-    <section class="py-20 grid md:grid-cols-2 gap-20">
+    <section class="py-20 grid md:grid-cols-2 gap-20 outer-container">
       <RecentPosts posts={recentPosts} />
       <SpeakingEngagements />
     </section>
