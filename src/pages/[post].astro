@@ -22,6 +22,9 @@ const { title, description, content, date, recentPosts, slug } = Astro.props;
 </Page>
 
 <style is:global>
+  .post-content {
+    @apply min-w-[0px];
+  }
   .post-content * + * {
     @apply mt-6;
   }

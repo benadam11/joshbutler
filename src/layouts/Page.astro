@@ -18,7 +18,7 @@ const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
 ---
 
 <Layout title={title} description={description} slug={slug}>
-  <div slot="header" class="py-[120px]">
+  <div slot="header" class="py-10 md:py-[120px]">
     {
       date && (
         <p class="text-base font-sans mb-4">
@@ -68,6 +68,7 @@ const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
 
   pre {
     white-space: pre-wrap;
-    @apply font-serif font-medium italic my-8;
+    word-wrap: break-word;
+    @apply font-serif font-medium italic my-8 overflow-hidden;
   }
 </style>

@@ -1,10 +1,22 @@
-<nav class="flex justify-between p-10 w-full mx-auto flex-col md:flex-row gap-4">
+<nav
+  class="flex justify-between p-10 w-full mx-auto gap-4 relative"
+>
   <a href="/">Joshua Ryan Butler</a>
-  <div class="flex flex-end md:gap-8 flex-col md:flex-row">
+  <div class="hidden md:flex flex-end md:gap-8 flex-col md:flex-row">
     <a class="nav-link" href="/about">About</a>
     <a class="nav-link" href="/books">Books</a>
     <a class="nav-link" href="/speaking">Speaking</a>
     <a class="nav-link" href="/blog">Blog</a>
+  </div>
+  <div class="relative md:hidden">
+    <label for="menu" class="font-sans text-base">＋ Menu</label>
+    <input name="menu" id="menu" type="checkbox" class="hidden" />
+    <div class="hidden flex-col gap-4 mobile-menu fixed bg-[var(--bg-alt)] w-full left-0 p-8">
+      <a class="nav-link" href="/about">About</a>
+      <a class="nav-link" href="/books">Books</a>
+      <a class="nav-link" href="/speaking">Speaking</a>
+      <a class="nav-link" href="/blog">Blog</a>
+    </div>
   </div>
 </nav>
 
@@ -23,6 +35,10 @@
     text-decoration: underline wavy var(--gold) !important;
     text-underline-offset: 0.5rem;
     text-decoration-color: var(--gold);
+  }
+
+  input:checked ~ .mobile-menu {
+    display: flex;
   }
 </style>
 
