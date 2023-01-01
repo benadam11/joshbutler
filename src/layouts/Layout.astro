@@ -79,7 +79,7 @@ const { title, description, slug } = Astro.props;
     --text-muted: #f2f2f2;
     --text-gray: #333333;
     --text-default: #000;
-    --gold: #d1a15f;
+    --gold: rgb(209, 161, 95);
     --light-blue: #f2f3fc;
   }
 
@@ -149,13 +149,13 @@ const { title, description, slug } = Astro.props;
   .dot-bg {
     background: radial-gradient(
           2px 2px at 50% 50%,
-          rgba(255, 255, 255, 0.2) 50%,
+          rgba(255, 255, 255, 1) 50%,
           transparent 50%
         )
         top / 12px 12px repeat,
       radial-gradient(
           4px 4px at 50% 50%,
-          rgba(0, 0, 0, 0.1) 50%,
+          rgb(0, 0, 0, .2) 50%,
           transparent 50%
         )
         top / 12px 12px repeat;
