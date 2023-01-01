@@ -9,12 +9,11 @@ export async function getPosts() {
     ...post,
     title: sanitize(post.title.rendered),
     description: convert(post.excerpt.rendered),
-    content: post.content.rendered,
+    content: sanitize(post.content.rendered),
     recentPosts: posts.slice(0, 4).map((post: any) => ({
       ...post,
       title: sanitize(post.title.rendered),
-      content: post.content.rendered,
+      content: sanitize(post.content.rendered),
     })),
   }));
 }
-
