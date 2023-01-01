@@ -1,5 +1,4 @@
 ---
-import { getRuntime } from "@astrojs/cloudflare/runtime";
 import Book from "../components/Book.astro";
 import Callout from "../components/Callout.astro";
 import HeroSection from "../components/HeroSection.astro";
@@ -9,7 +8,7 @@ import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/getPosts";
 import { books } from "./books.astro";
 
-const postData = await getPosts(getRuntime(Astro.request));
+const postData = await getPosts();
 const recentPosts = postData[0].recentPosts;
 const title = "Joshua Ryan Butler";
 const description =

@@ -18,7 +18,7 @@ const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
 ---
 
 <Layout title={title} description={description} slug={slug}>
-  <div slot="header" class="py-10 md:py-[120px]">
+  <div slot="header" class="pt-10 pb-20 md:py-[120px]">
     {
       date && (
         <p class="text-base font-sans mb-4">
@@ -28,7 +28,7 @@ const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
         </p>
       )
     }
-    <h1>{title}</h1>
+    <h1 class="text-3xl md:text-4xl">{title}</h1>
   </div>
   <div class="grid md:grid-cols-[1fr_300px] gap-20 py-20 min-w-0 outer-container">
     <main class="page-content">

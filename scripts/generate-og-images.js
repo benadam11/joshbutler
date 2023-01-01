@@ -4,33 +4,6 @@ import { Resvg } from "@resvg/resvg-js";
 import { html } from "satori-html";
 import satori from "satori";
 import sanitizeHtml from "sanitize-html";
-// fetch-polyfill.js
-import fetch, {
-  Blob,
-  blobFrom,
-  blobFromSync,
-  File,
-  fileFrom,
-  fileFromSync,
-  FormData,
-  Headers,
-  Request,
-  Response,
-} from "node-fetch";
-
-if (!globalThis.fetch) {
-  globalThis.fetch = fetch;
-  globalThis.Headers = Headers;
-  globalThis.Request = Request;
-  globalThis.Response = Response;
-  globalThis.FormData = FormData;
-  globalThis.Blob = Blob;
-  globalThis.File = File;
-  globalThis.blobFrom = blobFrom;
-  globalThis.blobFromSync = blobFromSync;
-  globalThis.fileFrom = fileFrom;
-  globalThis.fileFromSync = fileFromSync;
-}
 
 const height = 630;
 const width = 1200;
@@ -143,6 +116,19 @@ async function generateOgImage({ title, slug, date, image }) {
 }
 
 async function main() {
+  if (!globalThis.fetch) {
+    const {
+      default: fetch,
+      Headers,
+      Request,
+      Response,
+    } = await import("node-fetch");
+
+    globalThis.fetch ||= fetch;
+    globalThis.Headers ||= Headers;
+    globalThis.Request ||= Request;
+    globalThis.Response ||= Response;
+  }
   const t = performance.now();
   const posts = await getPostData();
   const image = await promises.readFile(
