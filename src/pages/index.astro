@@ -7,37 +7,7 @@ import RecentPosts from "../components/RecentPosts.astro";
 import SpeakingEngagements from "../components/SpeakingEngagements.astro";
 import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/getPosts";
-
-const books = [
-  {
-    id: "beautiful-union",
-    title: "Beautiful Union",
-    alt: "Beautiful Union Book Cover",
-    date: "2022",
-    src: "/images/beautiful-union.jpg",
-  },
-  {
-    id: "beautiful-union-study-guide",
-    title: "Beautiful Union (Study Guide)",
-    alt: "Beautiful Union Study Guide Book Cover",
-    date: "2022",
-    src: "/images/beautiful-union-study-guide.jpg",
-  },
-  {
-    id: "the-pursuing-god",
-    title: "The Pursuing God",
-    alt: "The Pursuing God Book Cover",
-    date: "2016",
-    src: "/images/the-pursuing-god.jpg",
-  },
-  {
-    id: "the-skeletons-in-gods-closet",
-    title: "The Skeletons in God's Closet",
-    alt: "The Skeletons in God's Closet Book Cover",
-    date: "2015",
-    src: "/images/the-skeletons-in-gods-closet.jpg",
-  },
-];
+import { books } from "./books.astro";
 
 const postData = await getPosts(getRuntime(Astro.request));
 const recentPosts = postData[0].recentPosts;

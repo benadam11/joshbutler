@@ -1,9 +1,9 @@
 ---
-const { title, date, src, alt } = Astro.props;
+const { title, date, featuredImage, alt } = Astro.props;
 ---
 
 <figure class="text-sm text-center">
-  <img width={300 * 0.8} height={450 * 0.8} src={src} alt={alt} />
+  <img width={300 * 0.8} height={450 * 0.8} src={featuredImage} alt={alt} />
   <figcaption class="font-sans text-sm text-center grid gap-2">
     <span>{title}</span>
     <span class="opacity-50 text-xs">{date}</span>

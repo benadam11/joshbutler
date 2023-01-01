@@ -1,13 +1,13 @@
 ---
 import WhereToBuy from "./WhereToBuy.astro";
-const { id, title, description, src } = Astro.props;
+const { id, title, description, postImage } = Astro.props;
 ---
 
 <section class="grid gap-10">
   <h4 id={id}>{title}</h4>
   <p>{description}</p>
   <figure>
-    <img src={src} />
+    <img src={postImage} />
   </figure>
   <WhereToBuy />
 </section>
