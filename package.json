@@ -30,6 +30,7 @@
     "yoga-wasm-web": "^0.2.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20221111.1",
     "@types/html-to-text": "^8.1.1",
     "@types/react": "^18.0.26",
     "@types/sanitize-html": "^2.8.0",

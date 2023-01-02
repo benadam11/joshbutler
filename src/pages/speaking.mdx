@@ -1,30 +1,36 @@
 ---
 posts: [
   {
-    url: 'https://www.youtube.com/watch?v=WIVyPAcxi_g',
-    title: 'You Should Believe in Jesus',
-    date: '6/24/2019',
+    url: 'https://www.youtube.com/watch?v=GpHFRGNZwew',
+    title: 'Does God Support Violence and Genocide in the Old Testament?',
+    date: '10/1/2022',
   },
   {
-    url: 'https://www.youtube.com/watch?v=WIVyPAcxi_g',
-    title: 'You Should Believe in Jesus',
-    date: '6/24/2019',
+    url: 'https://www.youtube.com/watch?v=AXRcuq_uzgQ',
+    title: 'Sex: Countercultural Convictions',
+    date: '9/14/2021',
   },
   {
-    url: 'https://www.youtube.com/watch?v=WIVyPAcxi_g',
-    title: 'You Should Believe in Jesus',
-    date: '6/24/2019',
+    url: 'https://www.youtube.com/watch?v=-A-qCSzOeD4',
+    title: 'The Good New About Hell',
+    date: '1/25/2019',
+  },
+  {
+    url: 'Giving Up The Hero Spot',
+    title: 'Giving Up The Hero Spot',
+    date: '2/23/2016',
   }
 ]
 ---
 
 import Page from '../layouts/Page.astro';
 import PostLinks from '../components/PostLinks.astro';
+import ContactForm from '../components/ContactForm.astro'
 
 <Page title="Speaking" description="Are you interested in having me speak?" slug="speaking">
   ## Thanks for considering having me speak!
   I love to help people encounter Christ in a fresh way. Please feel free to check out some recent sample messages and let me know if I can help explore crafting a message that’s the right fit for your event, by contacting me at: joshbutler@redemptionaz.com.
   #### Sample Speaking Messages
   <PostLinks posts={frontmatter.posts}/>
-  % TODO - contact form %
+  <ContactForm />
 </Page>
