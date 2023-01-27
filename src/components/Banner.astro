@@ -1,0 +1,38 @@
+<div
+  class="bg-[#000958] text-white py-2 px-4 text-sm md:text-[16px] text-center relative"
+>
+  <a href="/books#beatiful-union" class="underline font-[600] banner-link">
+    Introducing: <b class="font-bold">Beautiful Union</b><span
+      class="hidden lg:inline"
+    >
+      - How God’s vision for sex points us to the good, unlocks the true, and
+      (sort of) explains everything.</span
+    >
+  </a>
+  <button id="close-btn">
+    <img
+      class="absolute right-[16px] top-[50%] translate-y-[-50%]"
+      src="/images/close.svg"
+      width={12}
+      height={12}
+    />
+  </button>
+</div>
+<script>
+  const btn = document.getElementById("close-btn") as HTMLButtonElement;
+
+  function hide() {
+    if (btn.parentElement) {
+      btn.parentElement.style.display = "none";
+    }
+  }
+
+  if (!localStorage.getItem("banner")) {
+    btn.addEventListener("click", () => {
+      hide();
+      localStorage.setItem("banner", "dismissed");
+    });
+  } else {
+    hide();
+  }
+</script>

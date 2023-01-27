@@ -24,7 +24,7 @@ const { links, title } = Astro.props;
 </style>
 
 <script is:inline>
-  const links = document.querySelectorAll('a[href*="books#"]');
+  const links = document.querySelectorAll('a[href*="books#"]:not(.banner-link)');
   const opts = { threshold: 1, rootMargin: "0px 0px -70% 0px " };
 
   links?.[0]?.classList.add("active");

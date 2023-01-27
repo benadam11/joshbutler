@@ -1,4 +1,5 @@
 ---
+import Banner from "../components/Banner.astro";
 import Footer from "../components/Footer.astro";
 import NavBar from "../components/NavBar.astro";
 export interface Props {
@@ -16,18 +17,15 @@ const { title, description, slug } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" /><link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Rubik:wght@700"
-      rel="preload"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Rubik:wght@700"
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Rubik:wght@700"
       rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Rubik:wght@700"
+      rel="preload"
     />
     <meta name="generator" content={Astro.generator} />
 
@@ -58,6 +56,7 @@ const { title, description, slug } = Astro.props;
     />
   </head>
   <body class="text-2xl">
+    <Banner />
     <header class="bg-[var(--bg-alt)]">
       <NavBar />
       <div class="outer-container fade-in">
@@ -155,7 +154,7 @@ const { title, description, slug } = Astro.props;
         top / 12px 12px repeat,
       radial-gradient(
           4px 4px at 50% 50%,
-          rgb(0, 0, 0, .2) 50%,
+          rgb(0, 0, 0, 0.2) 50%,
           transparent 50%
         )
         top / 12px 12px repeat;
@@ -170,7 +169,7 @@ const { title, description, slug } = Astro.props;
   }
 
   .fade-in.fast {
-    animation: fade-in .5s ease-out;
+    animation: fade-in 0.5s ease-out;
   }
 
   body:has(input:checked) {
