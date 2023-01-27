@@ -99,6 +99,7 @@ async function generateOgImage({ title, slug, date, image }) {
       ],
       width,
       height,
+      debug: true,
     }
   );
 
@@ -113,6 +114,7 @@ async function generateOgImage({ title, slug, date, image }) {
     new URL(`../public/meta/${slug}.png`, import.meta.url),
     pngBuffer
   );
+  console.log("✅", slug);
 }
 
 async function main() {
@@ -130,11 +132,15 @@ async function main() {
     globalThis.Response ||= Response;
   }
   const t = performance.now();
-  const posts = await getPostData();
-  const image = await promises.readFile(
-    new URL("./images/josh-og.jpg", import.meta.url),
-    { encoding: "base64", width: 630, height: 623 }
-  );
+  const [posts, image] = await Promise.all([
+    getPostData(),
+    promises.readFile(new URL("./images/josh-og.jpg", import.meta.url), {
+      encoding: "base64",
+      width: 630,
+      height: 623,
+    }),
+  ]);
+
   await Promise.all(posts.map((post) => generateOgImage({ ...post, image })));
   console.info("✨ Done in", performance.now() - t, "ms");
 }
