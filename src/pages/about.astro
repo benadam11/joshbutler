@@ -1,0 +1,17 @@
+---
+import Page from "../layouts/Page.astro";
+import BioWidget from "../components/BioWidget.astro";
+import EmailWidget from "../components/EmailWidget.astro";
+import { Content } from "../markdown/about.md";
+
+const title = "About";
+export const prerender = true;
+---
+
+<Page title={title} description="A little bit about me" slug="about">
+  <div slot="aside" class="grid gap-20">
+    <BioWidget />
+    <EmailWidget />
+  </div>
+  <Content />
+</Page>

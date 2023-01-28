@@ -3,6 +3,7 @@ import EmailWidget from "../components/EmailWidget.astro";
 import RecentPosts from "../components/RecentPosts.astro";
 import Page from "../layouts/Page.astro";
 import { getPosts } from "../utils/getPosts";
+export const prerender = true;
 
 export const getStaticPaths = async () => {
   const posts = await getPosts();

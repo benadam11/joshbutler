@@ -8,6 +8,8 @@ import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/getPosts";
 import { books } from "./books.astro";
 
+export const prerender = true;
+
 const postData = await getPosts();
 const recentPosts = postData[0].recentPosts;
 const title = "Joshua Ryan Butler";

@@ -6,6 +6,8 @@ import Page from "../layouts/Page.astro";
 import { getPosts } from "../utils/getPosts";
 import { books } from "./books.astro";
 
+export const prerender = true;
+
 const posts = await getPosts();
 ---
 

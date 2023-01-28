@@ -1,15 +1,3 @@
----
-title: About
----
-import Page from '../layouts/Page.astro'
-import BioWidget from '../components/BioWidget.astro'
-import EmailWidget from '../components/EmailWidget.astro'
-
-<Page title={frontmatter.title} description="A little bit about me" slug="about">
-  <div slot="aside" class="grid gap-20">
-    <BioWidget />
-    <EmailWidget />
-  </div>
 ## Welcome! So glad you're here. 
 
 #### A little about me:
@@ -30,5 +18,3 @@ My wife Holly and I have been married since 2006, and have three beautiful child
 - I ate a dog (don't worry, it was cooked).
 
 I hope you enjoy the site! Make yourself at home, stay as long as you like, help yourself to anything in the fridge . . . and message me on Instagram or Twitter if you enjoyed your stay!
-</Page>
-

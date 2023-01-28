@@ -1,0 +1,54 @@
+---
+import Page from "../layouts/Page.astro";
+import ContactForm from "../components/ContactForm.astro";
+
+export const prerender = true;
+---
+
+<Page
+  title="Speaking"
+  description="Are you interested in having me speak?"
+  slug="speaking"
+>
+  <h2>Thanks for considering having me speak!</h2>
+  <p>
+    I love to help people encounter Christ in a fresh way. Please feel free to
+    check out some recent sample messages and let me know if I can help explore
+    crafting a message that’s the right fit for your event, by contacting me at:
+    joshbutler@redemptionaz.com.
+  </p>
+
+  <h4>Sample Speaking Messages</h4>
+  <div class="grid grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] gap-4 my-8">
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/GpHFRGNZwew?controls=0"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/AXRcuq_uzgQ?controls=0"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/-A-qCSzOeD4?controls=0"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/fRARHc08dRE?controls=0"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+
+  <ContactForm />
+</Page>
