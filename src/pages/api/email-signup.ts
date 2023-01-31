@@ -1,9 +1,11 @@
 import type { APIRoute } from "astro";
-import { md5 } from "hash-wasm";
 import { getRuntime } from "@astrojs/cloudflare/runtime";
 
 async function subscribe(email: string, apiKey: string) {
-  const subscriberHash = await md5(email);
+  const subscriberHash = await crypto.subtle.digest(
+    "md5",
+    new TextEncoder().encode(email.toLowerCase())
+  );
   const headers = new Headers();
 
   headers.append("Content-Type", "application/json");
