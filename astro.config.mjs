@@ -7,6 +7,6 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   output: "server",
   site: "https://joshbutler.pages.dev",
-  adapter: cloudflare(),
+  adapter: cloudflare({ mode: "directory" }),
   integrations: [tailwind(), mdx(), sitemap()],
 });

@@ -2,13 +2,13 @@ import type { APIRoute } from "astro";
 import { md5 } from "hash-wasm";
 import { getRuntime } from "@astrojs/cloudflare/runtime";
 
-const MAILCHIMP_API_KEY = "93428a414d8b8e65420ebd83719ca4ab-us9";
-
-async function subscribe(email: string) {
+async function subscribe(email: string, apiKey: string) {
   const subscriberHash = await md5(email);
   const headers = new Headers();
+
   headers.append("Content-Type", "application/json");
-  headers.append("Authorization", `apikey ${MAILCHIMP_API_KEY}`);
+  headers.append("Authorization", `Bearer ${apiKey}`);
+  console.log(email);
   const res = await fetch(
     `https://us9.api.mailchimp.com/3.0/lists/0a3dcfa066/members/${subscriberHash}?skip_merge_validation=true`,
     {
@@ -20,6 +20,8 @@ async function subscribe(email: string) {
       }),
     }
   );
+
+  console.log(res);
 }
 
 export const post: APIRoute = async ({ request }) => {
@@ -28,7 +30,9 @@ export const post: APIRoute = async ({ request }) => {
   ) {
     const data = await request.formData();
     const email = data.get("email") as string;
-    await subscribe(email);
+    const cf = getRuntime<{ MAILCHIMP_API_KEY: string }, {}>(request);
+    const apiKey = cf.env.MAILCHIMP_API_KEY;
+    await subscribe(email, apiKey);
     return new Response(null, {
       status: 302,
       headers: {

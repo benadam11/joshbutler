@@ -1,6 +1,7 @@
 # build output
 dist/
 # functions/
+functions/
 .output/
 
 # dependencies
@@ -25,3 +26,5 @@ wrangler.toml
 # dont store og images in git
 public/meta/*
 !public/meta/home.png
+
+

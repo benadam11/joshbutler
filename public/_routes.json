@@ -1,9 +1,19 @@
 {
   "version": 1,
-  "include": [
-    "/api/email-signup"
-  ],
+  "include": ["/api/*"],
   "exclude": [
-    "/*"
+    "/",
+    "/index.html",
+    "/sitemap-0.xml",
+    "/sitemap-index.xml",
+    "/favicon.ico",
+    "/_worker.js",
+    "/_astro/*",
+    "/about/*",
+    "/blog/*",
+    "/books/*",
+    "/speaking/*",
+    "/images/*",
+    "/meta/*"
   ]
 }
