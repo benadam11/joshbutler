@@ -1,8 +1,12 @@
 ---
-import Input from './Input.astro';
+import Input from "./Input.astro";
 ---
 
-<form class="relative flex items-center" action="/api/email-signup" method="POST">
+<form
+  class="relative flex items-center email-signup-wrapper"
+  action="/api/email-signup"
+  method="POST"
+>
   <Input
     type="email"
     name="email"
@@ -34,8 +38,7 @@ import Input from './Input.astro';
     let el = document.createElement("p");
     el.classList.add("text-xl", "font-body");
     el.innerText = "Thanks for signing up! 🎉";
-    parent.appendChild(el)
+    parent.appendChild(el);
     parent.removeChild(form);
   }
 </script>
-

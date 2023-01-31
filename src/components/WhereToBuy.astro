@@ -1,16 +1,12 @@
 ---
-const options = [
-  { store: "Amazon", url: "https://www.amazon.com" },
-  { store: "Books A Million", url: "https://www.booksamillion.com" },
-  { store: "Barnes & Noble", url: "https://www.barnesandnoble.com" },
-];
+const { options } = Astro.props;
 ---
 
 <div>
   <h4 class="text-lg mb-8">Where To Buy</h4>
   <ul class="font-sans text-sm font-normal border-t !ml-0">
     {
-      options.map((option) => {
+      options.map((option: { store: string; url: string }) => {
         return (
           <li class="flex justify-between items-center border-b p-4">
             <span>{option.store}</span>

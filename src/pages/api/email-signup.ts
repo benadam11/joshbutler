@@ -6,12 +6,11 @@ async function subscribe(email: string, apiKey: string) {
     "md5",
     new TextEncoder().encode(email.toLowerCase())
   );
-  const headers = new Headers();
 
+  const headers = new Headers();
   headers.append("Content-Type", "application/json");
   headers.append("Authorization", `Bearer ${apiKey}`);
-  console.log(email);
-  const res = await fetch(
+  await fetch(
     `https://us9.api.mailchimp.com/3.0/lists/0a3dcfa066/members/${subscriberHash}?skip_merge_validation=true`,
     {
       method: "PUT",
@@ -22,8 +21,6 @@ async function subscribe(email: string, apiKey: string) {
       }),
     }
   );
-
-  console.log(res);
 }
 
 export const post: APIRoute = async ({ request }) => {
