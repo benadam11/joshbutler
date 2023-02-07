@@ -18,7 +18,7 @@ const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
 ---
 
 <Layout title={title} description={description} slug={slug}>
-  <div slot="header" class="pt-10 pb-20 md:py-[120px]">
+  <div slot="header" class="pt-10 pb-20 md:py-[180px]">
     {
       date && (
         <p class="text-base font-sans mb-4">
@@ -34,7 +34,7 @@ const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
     <main class="page-content">
       <slot />
     </main>
-    <aside class="sticky top-10 self-start grid gap-10">
+    <aside class="sticky top-20 self-start grid gap-10">
       <slot name="aside" />
     </aside>
   </div>
