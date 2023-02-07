@@ -15,7 +15,7 @@ function sanitize(text) {
 }
 
 function getPostData() {
-  return fetch("http://joshuaryanbutler.com/wp-json/wp/v2/posts?per_page=100")
+  return fetch("https://api.joshuaryanbutler.com/wp-json/wp/v2/posts?per_page=100")
     .then((res) => res.json())
     .then((posts) => {
       return posts.map((post) => {
