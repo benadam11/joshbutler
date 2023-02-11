@@ -4,6 +4,7 @@ import Callout from "../components/Callout.astro";
 import HeroSection from "../components/HeroSection.astro";
 import RecentPosts from "../components/RecentPosts.astro";
 import SpeakingEngagements from "../components/SpeakingEngagements.astro";
+import Testimonials from "../components/Testimonials.astro";
 import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/getPosts";
 import { books } from "./books.astro";
@@ -23,9 +24,10 @@ const description =
     <section class="outer-container">
       <Callout />
     </section>
-    <section class="relative h-[750px] md:h-[650px]">
+    <Testimonials />
+    <section class="relative h-[750px] md:h-[680px]">
       <div class="mb-8 outer-container">
-        <h4 class="mb-8">More Books</h4>
+        <h4 class="mb-12">More Books</h4>
         <p class="max-w-[55ch]">
           I love shifting paradigms, to help people who wrestle with tough
           topics of the Christian faith by confronting popular caricatures and
@@ -61,7 +63,7 @@ const description =
         </ul>
       </div>
     </section>
-    <section class="py-20 grid md:grid-cols-2 gap-20 outer-container">
+    <section class="py-[140px] grid md:grid-cols-2 gap-20 outer-container">
       <RecentPosts posts={recentPosts} />
       <SpeakingEngagements />
     </section>

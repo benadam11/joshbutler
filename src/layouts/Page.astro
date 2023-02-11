@@ -7,18 +7,14 @@ export interface Props {
   slug: string;
 }
 
-const title =
-  Astro.props?.title || Astro.props.frontmatter?.title || "Untitled";
-const date = Astro.props?.date || Astro.props.frontmatter?.date;
-const description =
-  Astro.props?.description ||
-  Astro.props.frontmatter?.description ||
-  "No description";
-const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
+const title = Astro.props?.title || "Untitled";
+const date = Astro.props?.date;
+const description = Astro.props?.description || "No description";
+const slug = Astro.props?.slug;
 ---
 
 <Layout title={title} description={description} slug={slug}>
-  <div slot="header" class="pt-10 pb-20 md:py-[180px]">
+  <div slot="header" class="pt-10 pb-20">
     {
       date && (
         <p class="text-base font-sans mb-4">
@@ -30,7 +26,9 @@ const slug = Astro.props?.slug || Astro.props.frontmatter?.slug;
     }
     <h1 class="text-3xl md:text-4xl">{title}</h1>
   </div>
-  <div class="grid md:grid-cols-[1fr_300px] gap-20 py-20 min-w-0 outer-container">
+  <div
+    class="grid md:grid-cols-[1fr_300px] gap-20 py-20 min-w-0 outer-container"
+  >
     <main class="page-content">
       <slot />
     </main>

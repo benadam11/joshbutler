@@ -1,23 +1,60 @@
 <div
-  class="bg-[#000958] text-white py-4 px-4 text-sm text-center font-sans sticky top-0 z-10"
+  class="banner bg-[#000958] text-white fixed bottom-2 right-2 z-10 w-full max-w-[400px] p-8 rounded-xl grid grid-cols-[auto_1fr] gap-6"
 >
-  <a href="/books#beatiful-union" class="underline banner-link">
-    Introducing <b class="font-bold">Beautiful Union</b><span
-      class="hidden lg:inline"
-    >
-      - How God’s vision for sex points us to the good, unlocks the true, and
-      (sort of) explains everything.</span
-    >
-  </a>
-  <button id="close-btn">
+  <figure>
+    <img width="120px" src="/images/beautiful-union.jpg" />
+  </figure>
+  <div class="font-sans text-[16px] self-center">
+    <p class="text-[14px]">
+      Introducing:
+    </p>
+    <a href="/books#beatiful-union" class="underline banner-link block mb-2">
+      <b class="font-bold">Beautiful Union</b>
+    </a>
+    <p class="text-[16px]">
+      How God’s vision for sex points us to the good, unlocks the true, and
+      (sort of) explains everything.
+    </p>
+  </div>
+  <button class="absolute right-[16px] top-[16px]" id="close-btn">
     <img
-      class="absolute right-[16px] top-[50%] translate-y-[-50%]"
+      
       src="/images/close.svg"
       width={12}
       height={12}
     />
   </button>
 </div>
+
+<style>
+  figure {
+    margin: 0;
+    padding: 0;
+  }
+  .banner {
+    animation: banner 2s ease-in-out;
+  }
+
+  @keyframes banner {
+    0% {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+    70% {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+
+    85% {
+      opacity: 1;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+</style>
 <script>
   const btn = document.getElementById("close-btn") as HTMLButtonElement;
 

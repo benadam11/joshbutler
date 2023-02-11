@@ -1,0 +1,42 @@
+---
+const { img, name, bio, text, bg } = Astro.props;
+---
+
+<article
+  class="relative p-8 aspect-square shrink-0 w-[350px] rounded-xl"
+  style={{ background: bg }}
+>
+  <figure class="absolute top-[-32px] left-[50%] translate-x-[-50%]">
+    <img
+      class="rounded-full"
+      width="64px"
+      height="64px"
+      src={img}
+      alt={`${name} - thumbnail`}
+      style={{ border: `4px solid ${bg}` }}
+    />
+  </figure>
+  <header class="text-center my-4">
+    <h4 class="text-[18px]">{name}</h4>
+    <h6 class="text-[14px] font-semibold">{bio}</h6>
+  </header>
+  <p class="text-[18px]">{text}</p>
+</article>
+
+<style>
+  article {
+    animation: fade-up .3s ease-in-out;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes fade-up {
+    0% {
+      opacity: 0;
+      transform: translateY(80px)
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+</style>
