@@ -99,7 +99,6 @@ async function generateOgImage({ title, slug, date, image }) {
       ],
       width,
       height,
-      debug: true,
     }
   );
 
