@@ -5,16 +5,18 @@ export interface Props {
   date?: string;
   description: string;
   slug: string;
+  post?: boolean;
 }
 
 const title = Astro.props?.title || "Untitled";
 const date = Astro.props?.date;
 const description = Astro.props?.description || "No description";
 const slug = Astro.props?.slug;
+const post = Astro.props?.post;
 ---
 
 <Layout title={title} description={description} slug={slug}>
-  <div slot="header" class="pt-10 pb-20">
+  <div slot="header" class="pt-10 pb-20 header">
     {
       date && (
         <p class="text-base font-sans mb-4">
@@ -27,12 +29,15 @@ const slug = Astro.props?.slug;
     <h1 class="text-3xl md:text-4xl">{title}</h1>
   </div>
   <div
-    class="grid md:grid-cols-[1fr_300px] gap-20 py-20 min-w-0 outer-container"
+    class={`grid ${
+      !post ? "md:grid-cols-[1fr_300px]" : ""
+    } gap-20 py-20 min-w-0 outer-container`}
   >
     <main class="page-content">
       <slot />
     </main>
-    <aside class="sticky top-20 self-start grid gap-10">
+
+    <aside class="sticky top-20 self-start grid gap-10 aside">
       <slot name="aside" />
     </aside>
   </div>

@@ -16,16 +16,19 @@ export const getStaticPaths = async () => {
 const { title, description, content, date, recentPosts, slug } = Astro.props;
 ---
 
-<Page date={date} title={title} description={description} slug={slug}>
+<Page post date={date} title={title} description={description} slug={slug}>
   <RecentPosts slot="aside" posts={recentPosts} />
   <EmailWidget slot="aside" />
   <div class="post-content" set:html={content} />
 </Page>
 
 <style is:global>
+  .header,
+  .aside,
   .post-content {
-    @apply min-w-[0px];
+    @apply min-w-[0px] w-full max-w-[65ch] mx-auto;
   }
+
   .post-content * + * {
     @apply mt-6;
   }
