@@ -3,8 +3,8 @@ const { img, name, bio, text, bg } = Astro.props;
 ---
 
 <article
-  class="relative p-8 aspect-square shrink-0 w-[350px] rounded-xl"
-  style={{ background: bg }}
+  class="relative p-8 aspect-[5/3] shrink-0 w-full rounded-xl border-black/10 border"
+  style={{ background: 'transparent' }}
 >
   <figure class="absolute top-[-32px] left-[50%] translate-x-[-50%]">
     <img
@@ -13,7 +13,7 @@ const { img, name, bio, text, bg } = Astro.props;
       height="64px"
       src={img}
       alt={`${name} - thumbnail`}
-      style={{ border: `4px solid ${bg}` }}
+      style={{ border: `4px solid #f6f6f6` }}
     />
   </figure>
   <header class="text-center my-4">
