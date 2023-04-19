@@ -8,7 +8,7 @@ export const post: APIRoute = async ({ request }) => {
       const body = await request.json() as any;
       const email = body.email;
       const cf = getRuntime<{ MAILCHIMP_API_KEY: string }, {}>(request);
-      const apiKey = cf?.env?.MAILCHIMP_API_KEY || process.env.MAILCHIMP_API_KEY;
+      const apiKey = cf?.env?.MAILCHIMP_API_KEY || import.meta.env.MAILCHIMP_API_KEY;
       if(!apiKey) throw new Error('No API Key found');
       await subscribe(email, apiKey);
       return new Response(JSON.stringify({ sucess: true }), {
