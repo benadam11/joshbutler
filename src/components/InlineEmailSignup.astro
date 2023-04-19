@@ -1,0 +1,76 @@
+---
+import Input from "./Input.astro";
+const { downloadIntent } = Astro.props;
+---
+
+<form class="relative flex items-center email-signup-wrapper">
+  <Input
+    type="email"
+    name="email"
+    placeholder="Enter your email address"
+    required
+  />
+  <div class="absolute right-2">
+    <button
+      type="submit"
+      class="grid gap-4 place-items-center text-xl font-body"
+    >
+      <span
+        class="w-[32px] h-[32px] rounded-full border border-black flex items-center justify-center -rotate-90"
+      >
+        <img width="12px" height="12px" src="/images/down-arrow.svg" />
+      </span>
+    </button>
+  </div>
+</form>
+<script is:inline define:vars={{ downloadIntent }}>
+  const form = document.querySelector(".email-signup-wrapper");
+  const input = document.querySelector(".email-signup-wrapper input");
+  const button = document.querySelector(".email-signup-wrapper button");
+  const arrow = document.querySelector(".email-signup-wrapper .-rotate-90");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+
+    fetch("/api/inline-signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          alert(
+            "Woops looks like there was an issue subscribing you to the newsletter. Please try again."
+          );
+        } else {
+          alert("Success! You're now subscribed to the newsletter.");
+          e.target.reset();
+
+          if (downloadIntent) {
+            const downloadLink = document.createElement("a");
+            downloadLink.href = `/pdf/BeautifulUnion_SP.pdf`;
+            downloadLink.download = "BeautifulUnion_SP.pdf";
+            downloadLink.target = "_blank";
+            downloadLink.click();
+          }
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
+
+    if (input.value) {
+      button.classList.add("animate-pulse");
+      arrow.classList.add("animate-pulse");
+      setTimeout(() => {
+        button.classList.remove("animate-pulse");
+        arrow.classList.remove("animate-pulse");
+      }, 1000);
+    }
+  });
+</script>
