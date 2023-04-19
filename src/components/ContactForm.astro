@@ -1,7 +1,17 @@
 <h4 id="contact" class="text-2xl">Contact</h4>
 <form class="grid gap-4">
   <div>
-    <label for="date">Email＊</label>
+    <label for="email">Your Name＊</label>
+    <input
+      required
+      name="name"
+      type="text"
+      placeholder="What's your name?"
+      class="appearance-none border-b border-black bg-[rgba(0,0,0,.02)] px-4 py-2 text-base outline-none w-full"
+    />
+  </div>
+  <div>
+    <label for="email">Your Email＊</label>
     <input
       required
       name="email"
@@ -38,7 +48,7 @@
   </div>
   <div class="sm:grid sm:grid-cols-2 gap-4">
     <div>
-      <label for="attendees">Number of attendees</label>
+      <label for="attendees">Number of attendees?</label>
       <input
         name="attendees"
         type="number"
@@ -47,7 +57,7 @@
       />
     </div>
     <div>
-      <label for="budget">Budget</label>
+      <label for="budget">Budgeted honorarium?</label>
       <input
         name="budget"
         type="number"
