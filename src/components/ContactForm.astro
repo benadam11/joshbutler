@@ -1,11 +1,111 @@
 <h4 id="contact" class="text-2xl">Contact</h4>
-<p>
-  The best way to get in touch with me is to send me an email at
-  <a
-    href={`mailto:joshua.butler@gmail.com?subject=${encodeURIComponent(
-      "Speaking Engagement / Website Contact"
-    )}`}
+<form class="grid gap-4">
+  <div>
+    <label for="date">Email＊</label>
+    <input
+      required
+      name="email"
+      type="email"
+      placeholder="Enter your email address"
+      class="appearance-none border-b border-black bg-[rgba(0,0,0,.02)] px-4 py-2 text-base outline-none w-full"
+    />
+  </div>
+  <div class="sm:grid sm:grid-cols-2 gap-4">
+    <div class="w-full">
+      <label for="date">Event Date＊</label>
+      <input
+        required
+        name="date"
+        type="date"
+        class="appearance-none border-b border-black bg-[rgba(0,0,0,.02)] px-4 py-2 text-base outline-none w-full h-[40px]"
+      />
+    </div>
+    <div>
+      <label for="event-type">Event Type＊</label>
+      <select
+        required
+        name="event-type"
+        class="border-b border-black bg-[rgba(0,0,0,.02)] px-4 py-2 text-base outline-none w-full h-[40px]"
+      >
+        <option value="interview">Media Interview</option>
+        <option value="podcast">Podcast</option>
+        <option value="panel-event">Q﹠A Panel / Event</option>
+        <option value="lecture">Lecture / Sermon</option>
+        <option value="retreat">Retreat</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="sm:grid sm:grid-cols-2 gap-4">
+    <div>
+      <label for="attendees">Number of attendees</label>
+      <input
+        name="attendees"
+        type="number"
+        placeholder="Approximate number of attendees"
+        class="appearance-none border-b border-black bg-[rgba(0,0,0,.02)] px-4 py-2 text-base outline-none w-full"
+      />
+    </div>
+    <div>
+      <label for="budget">Budget</label>
+      <input
+        name="budget"
+        type="number"
+        placeholder="Approximate budget"
+        class="appearance-none border-b border-black bg-[rgba(0,0,0,.02)] px-4 py-2 text-base outline-none w-full"
+      />
+    </div>
+  </div>
+  <div>
+    <label for="message">Message＊</label>
+    <textarea
+      required
+      name="message"
+      placeholder="Brief Message"
+      rows={5}
+      class="appearance-none border-b border-black bg-[rgba(0,0,0,.02)] px-4 py-2 text-base outline-none w-full"
+    ></textarea>
+  </div>
+  <button
+    type="submit"
+    class="bg-black text-white px-4 py-2 text-base font-semibold w-full disabled:opacity-50 disabled:cursor-not-allowed"
   >
-    joshua.butler@gmail.com
-  </a>
-</p>
+    Submit
+  </button>
+</form>
+
+<style>
+  label {
+    font-size: 13px;
+    font-family: "Rubik", sans-serif;
+  }
+</style>
+
+<script>
+  const form = document.querySelector("form") as HTMLFormElement;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    const btn = form.querySelector("button") as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    const res = await fetch("/api/contact", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(Object.fromEntries(formData)),
+    });
+
+    btn.disabled = false;
+    btn.textContent = "Submit";
+    if (res.ok) {
+      form.reset();
+      alert("Thanks for your message!");
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
