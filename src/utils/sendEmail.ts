@@ -22,7 +22,7 @@ export async function sendEmail({
         {
           to: [
             {
-              email: "benjamin.mark.adam@gmail.com",
+              email: "joshua.butler@gmail.com",
             },
           ],
           subject: "New Contact Form Submission",
