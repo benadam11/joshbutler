@@ -8,6 +8,7 @@ import Testimonials from "../components/Testimonials.astro";
 import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../utils/getPosts";
 import { books } from "./books.astro";
+const testimonials = books[0].testimonials;
 
 export const prerender = true;
 
@@ -15,7 +16,7 @@ const postData = await getPosts();
 const recentPosts = postData[0].recentPosts;
 const title = "Joshua Ryan Butler";
 const description =
-  "I’m a pastor of Redemption Tempe in Arizona, the author of Beautiful Union (and a few other books), and a fellow with The Keller Center for Cultural Apologetics.";
+  "I’m the author of Beautiful Union (and a few other books). I love shifting paradigms, to help people who wrestle with tough topics of the Christian faith by confronting popular caricatures and replacing them with the real thing.";
 ---
 
 <Layout title={title} description={description} slug="home">
@@ -24,7 +25,7 @@ const description =
     <section class="outer-container">
       <Callout />
     </section>
-    <Testimonials />
+    <Testimonials testimonials={testimonials?.slice(0,2)} title={books[0].title} />
     <section class="relative h-[750px] md:h-[680px]">
       <div class="mb-8 outer-container">
         <h4 class="mb-12">More Books</h4>
@@ -41,7 +42,7 @@ const description =
           {
             books.map((book) => (
               <li class="block shrink-0">
-                <a href={`/books#${book.id}`} class="block">
+                <a href={`/books/${book.id}`} class="block">
                   <Book {...book} />
                 </a>
               </li>
