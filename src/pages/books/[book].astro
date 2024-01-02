@@ -1,4 +1,5 @@
 ---
+import MyBooks from "../../components/MyBooks.astro";
 import Testimonials from "../../components/Testimonials.astro";
 import WhereToBuy from "../../components/WhereToBuy.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -8,7 +9,7 @@ export const prerender = true;
 export const getStaticPaths = async () => {
   return books.map((book: any) => ({
     params: { book: book.id },
-    props: { ...book },
+    props: { ...book, otherBooks: books.filter((b) => b.id !== book.id) },
   }));
 };
 
@@ -19,6 +20,7 @@ const {
   featuredImage,
   options,
   testimonials = [],
+  otherBooks = [],
 } = Astro.props;
 ---
 
@@ -47,6 +49,7 @@ const {
         <Testimonials title={title} testimonials={testimonials} />
       )
     }
+    <MyBooks books={otherBooks} />
     <div class="h-[200px]"></div>
   </main>
 </Layout>
