@@ -9,15 +9,15 @@ import TestimonialCard from "./TestimonialCard.astro";
 const { testimonials, title } = Astro.props;
 ---
 
-<section class="py-[120px]">
+<div class="py-[120px]">
   <header class="text-center mb-10">
     <h5 class="font-sans text-[22px] mb-4">Testimonials</h5>
     <p class="text-[18px]">
       Love for <b class="font-bold">{title}</b> from leading voices.
     </p>
   </header>
-  <div class="overflow-auto py-8 outer-container">
-    <ul class="grid md:grid-cols-2 gap-12 items-center">
+  <div class="overflow-auto py-8">
+    <ul class="grid md:grid-cols-2 gap-12">
       {
         testimonials.map((tesimonial: Testimonial, i: number) => {
           return (
@@ -29,4 +29,4 @@ const { testimonials, title } = Astro.props;
       }
     </ul>
   </div>
-</section>
+</div>

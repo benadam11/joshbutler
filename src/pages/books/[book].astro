@@ -1,4 +1,5 @@
 ---
+import Download from "../../components/Download.astro";
 import MyBooks from "../../components/MyBooks.astro";
 import Testimonials from "../../components/Testimonials.astro";
 import WhereToBuy from "../../components/WhereToBuy.astro";
@@ -21,6 +22,7 @@ const {
   options,
   testimonials = [],
   otherBooks = [],
+  pdf,
 } = Astro.props;
 ---
 
@@ -29,7 +31,9 @@ const {
     <div
       class="md:grid md:gap-[120px] relative md:grid-cols-[auto_1fr] min-h-0 pt-10"
     >
-      <figure class="w-full sm:max-w-[350px] sticky top-0 self-start pt-10">
+      <figure
+        class="w-full sm:max-w-[350px] md:sticky top-0 self-start pt-10 mb-8"
+      >
         <img src={featuredImage} alt={title} />
       </figure>
       <div class="grid gap-12">
@@ -41,6 +45,7 @@ const {
           <h4 class="text-lg mb-4">About</h4>
           <p>{description}</p>
         </div>
+        {pdf && <Download pdf={pdf} />}
         <WhereToBuy options={options} />
       </div>
     </div>
@@ -49,7 +54,7 @@ const {
         <Testimonials title={title} testimonials={testimonials} />
       )
     }
-    <MyBooks books={otherBooks} />
-    <div class="h-[200px]"></div>
   </main>
+  <MyBooks books={otherBooks} />
+  <div class="h-[200px]"></div>
 </Layout>

@@ -15,7 +15,7 @@ const { books } = Astro.props;
   <div
     class="absolute w-full bottom-0 overflow-auto pl-[2rem] lg:pl-[calc((100vw_-_(1120px_-_4rem))_/_2)] pt-40"
   >
-    <ul class="inline-flex gap-20 items-center w-full">
+    <ul class="inline-flex gap-20 items-center justify-start w-full">
       {
         books.map((book: any) => (
           <li class="block shrink-0">
