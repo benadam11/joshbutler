@@ -1,4 +1,5 @@
 ---
+import WhereToBuy from "./WhereToBuy.astro";
 const { id, title, description, postImage, options } = Astro.props;
 ---
 
@@ -7,6 +8,6 @@ const { id, title, description, postImage, options } = Astro.props;
   <figure>
     <img src={postImage} />
   </figure>
-  <!-- <p>{description}</p> -->
-  <a href={`${Astro.url.origin}/books/${id}`}>Learn More</a>
+  <p>{description}</p>
+  <WhereToBuy options={options} />
 </section>

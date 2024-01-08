@@ -56,7 +56,6 @@ const { title, description, slug } = Astro.props;
     />
   </head>
   <body class="text-2xl">
-    <slot name="bg" />
     <Banner />
     <header>
       <NavBar />
@@ -72,7 +71,7 @@ const { title, description, slug } = Astro.props;
 </html>
 <style is:global>
   :root {
-    --bg-alt: #FAF6EF;
+    --bg-alt: #F7F0E3;
     --bg-main: #fff;
     --bg-light-purple: #f2f3fc;
     --bg-dark: #000;
@@ -80,8 +79,7 @@ const { title, description, slug } = Astro.props;
     --text-gray: #333333;
     --text-default: #000;
     --gold: rgb(209, 161, 95);
-    --light-blue: #ebedff;
-    --light-blue-2: rgba(30, 117, 175, 0.05);
+    --light-blue: #EBEDFF;
   }
 
   html {

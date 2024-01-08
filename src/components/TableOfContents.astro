@@ -8,7 +8,7 @@ const { links, title } = Astro.props;
     {
       links.map(({ id, title }: { id: string; title: string }) => (
         <li>
-          <a class="text-xl underline" href={`${Astro.url.origin}/books/${id}`}>
+          <a class="text-xl underline" href={`${Astro.url.origin}/books#${id}`}>
             {title}
           </a>
         </li>
@@ -23,4 +23,43 @@ const { links, title } = Astro.props;
   }
 </style>
 
+<script is:inline>
+  const links = document.querySelectorAll('a[href*="books#"]:not(.banner-link)');
+  const opts = { threshold: 1, rootMargin: "0px 0px -70% 0px " };
 
+  links?.[0]?.classList.add("active");
+
+  function resetActiveElement(match) {
+    if (match) {
+      links.forEach((el) => el.classList.remove("active"));
+      match.classList.add("active");
+    }
+  }
+
+  const observerCallback = (entries) => {
+    const id = entries.find((entry) => entry.isIntersecting)?.target?.id;
+    resetActiveElement(document.querySelector(`a[href$="#${id}"`));
+  };
+
+  const observer = new IntersectionObserver(observerCallback, opts);
+
+  document.querySelectorAll(".page-content h4").forEach((el) => {
+    observer.observe(el);
+  });
+
+  if (window.location.href.includes("books")) {
+    links.forEach((el) => {
+      el.onclick = function (e) {
+        e.preventDefault();
+        const selector = el.getAttribute("href").split("#")[1];
+        let target = document.getElementById(selector);
+        let offsetPosition = target.offsetTop - 100;
+        resetActiveElement(e.target);
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      };
+    });
+  }
+</script>

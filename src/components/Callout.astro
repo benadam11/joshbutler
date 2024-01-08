@@ -4,27 +4,28 @@ import EmailSignup from "./InlineEmailSignup.astro";
 
 <div class="mt-20">
   <h4 class="mb-20">My Latest Book:</h4>
-  <article id="latest-work" class="bg-[var(--light-blue-2)] p-8 md:p-20 rounded-xl md:rounded-3xl w-full grid md:grid-cols-[1fr_350px] gap-20">
+  <article id="latest-work" class="bg-[var(--light-blue)] p-8 md:p-20 rounded-xl md:rounded-3xl w-full grid md:grid-cols-[1fr_350px] gap-20">
     <div class="w-full self-center">
       <div>
         <h3 class="font-light mb-8">
-          <b>The Party Crasher</b>
+          <b>Beautiful Union</b>
         </h3>
         <p class="text-xl">
-          The fervency with which so many advocate their political ideals is best described in religious terms. Fortunately, Jesus is the ultimate Party Crasher. And he is disrupting politics-as-usual to invite us to embrace a bold vision capable of redeeming our partisan divide.
+          How God’s vision for sex points us to the good, unlocks the true, and
+          (sort of) explains everything.
         </p>
       </div>
       <div class="grid mt-6 email-signup-wrapper">
-        <p class="text-lg mb-4">Get <b>updates</b> by joining my newsletter</p>
-        <EmailSignup />
+        <p class="text-lg mb-4">Download <b>Chapter 1</b> for free</p>
+        <EmailSignup downloadIntent />
       </div>
     </div>
     <figure>
       <img
         width="500px"
         class="w-full h-auto"
-        src="/images/the-party-crasher.png"
-        alt="The Party Crasher"
+        src="/images/beautiful-union.jpg"
+        alt="Beautiful Union"
       />
     </figure>
   </article>

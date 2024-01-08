@@ -1,22 +1,24 @@
 <div
-  class="banner bg-black text-white fixed bottom-2 right-2 z-10 w-[95vw] max-w-[400px] p-8 rounded-xl grid grid-cols-[auto_1fr] gap-6"
+  class="banner bg-[#000958] text-white fixed bottom-2 right-2 z-10 w-[95vw] max-w-[400px] p-8 rounded-xl grid grid-cols-[auto_1fr] gap-6"
 >
   <figure>
-    <img width="120px" src="/images/the-party-crasher.png" />
+    <img width="120px" src="/images/beautiful-union.jpg" />
   </figure>
   <div class="font-sans text-[16px] self-center">
     <p class="text-[14px]">
       Introducing:
     </p>
-    <a href="/books/the-party-crasher" class="underline banner-link block mb-2">
-      <b class="font-bold">The Party Crasher</b>
+    <a href="/books#beatiful-union" class="underline banner-link block mb-2">
+      <b class="font-bold">Beautiful Union</b>
     </a>
     <p class="text-[16px]">
-      The political divide is wider than ever. Fortunately, Jesus is the ultimate Party Crasher.
+      How God’s vision for sex points us to the good, unlocks the true, and
+      (sort of) explains everything.
     </p>
   </div>
   <button class="absolute right-[16px] top-[16px]" id="close-btn">
     <img
+      
       src="/images/close.svg"
       width={12}
       height={12}
@@ -62,10 +64,10 @@
     }
   }
 
-  if (!localStorage.getItem("banner-party-crasher")) {
+  if (!localStorage.getItem("banner")) {
     btn.addEventListener("click", () => {
       hide();
-      localStorage.setItem("banner-party-crasher", "dismissed");
+      localStorage.setItem("banner", "dismissed");
     });
   } else {
     hide();
