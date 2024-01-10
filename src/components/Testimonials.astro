@@ -1,49 +1,25 @@
 ---
+interface Testimonial {
+  name: string;
+  designation: string;
+  avatar: string;
+  message: string;
+}
 import TestimonialCard from "./TestimonialCard.astro";
-
-const testimonials = [
-  {
-    img: "/images/kristin-knave.png",
-    name: "Kristin Knave",
-    bio: "Creator - SheLovesBible",
-    text: `“What a timely and much-needed book! Whether you are married or single, this is a must-read that will give you clarity on the meaning and purpose of sex.”`,
-    bg: "#FFF1EF",
-  },
-  {
-    img: "/images/john-mark-comer.png",
-    name: "John Mark Comer",
-    bio: "Author - Live No Lies",
-    text: `“One of the books for our time. An essential read. It expertly captures the beauty of orthodox Christian sexuality in a way that is thoughtful, well researched, well written, and deeply compelling.”`,
-    bg: "#F7F0E3",
-  },
-  {
-    img: "/images/albert-tate.png",
-    name: "Albert Tate",
-    bio: "Author - How We Love Matters",
-    text: `“Josh Butler has done it again. He has a way of taking the things I’ve been trying to think through and giving words and clarity to those issues and concerns. Thank you, Josh—you just made my preaching and leading easier.”`,
-    bg: "#EBEDFF",
-  },
-  {
-    img: "/images/jen-pollock-michel.png",
-    name: "Jen Pollock Michel",
-    bio: "Author - In Good Time",
-    text: `“Beautiful Union by Joshua Ryan Butler is a marvel. Its simplicity is its profundity; its truth is its love. I finished these pages in tears, my imagination renewed and expanded to consider the pursuing, self-giving love God has shown to his people through Christ.”`,
-    bg: "#E0F0F3",
-  },
-];
+const { testimonials, title } = Astro.props;
 ---
 
-<section class="py-[120px]">
+<div class="py-[120px]">
   <header class="text-center mb-10">
     <h5 class="font-sans text-[22px] mb-4">Testimonials</h5>
     <p class="text-[18px]">
-      Love for <b class="font-bold">Beautiful Union</b> from leading voices.
+      Love for <b class="font-bold">{title}</b> from leading voices.
     </p>
   </header>
-  <div class="overflow-auto py-8 outer-container">
-    <ul class="grid md:grid-cols-2 gap-12 items-center">
+  <div class="overflow-auto py-8">
+    <ul class="grid md:grid-cols-2 gap-12">
       {
-        testimonials.map((tesimonial, i) => {
+        testimonials.map((tesimonial: Testimonial, i: number) => {
           return (
             <li class="block" style={{ "--delay": i * 100 }}>
               <TestimonialCard {...tesimonial} />
@@ -53,4 +29,4 @@ const testimonials = [
       }
     </ul>
   </div>
-</section>
+</div>
