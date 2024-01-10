@@ -5,22 +5,17 @@
     <img width="120px" src="/images/the-party-crasher.png" />
   </figure>
   <div class="font-sans text-[16px] self-center">
-    <p class="text-[14px]">
-      Introducing:
-    </p>
+    <p class="text-[14px]">Introducing:</p>
     <a href="/books/the-party-crasher" class="underline banner-link block mb-2">
       <b class="font-bold">The Party Crasher</b>
     </a>
     <p class="text-[16px]">
-      The political divide is wider than ever. Fortunately, Jesus is the ultimate Party Crasher.
+      The political divide is wider than ever. Fortunately, Jesus is the
+      ultimate Party Crasher.
     </p>
   </div>
-  <button class="absolute right-[16px] top-[16px]" id="close-btn">
-    <img
-      src="/images/close.svg"
-      width={12}
-      height={12}
-    />
+  <button class="absolute right-[16px] top-[16px]" id="jb-close-btn">
+    <img src="/images/close.svg" width={12} height={12} />
   </button>
 </div>
 
@@ -53,8 +48,10 @@
     }
   }
 </style>
-<script>
-  const btn = document.getElementById("close-btn") as HTMLButtonElement;
+<script is:inline>
+  const btn = document.getElementById("jb-close-btn");
+  const isBannerHidden =
+    localStorage.getItem("banner-party-crasher") === "dismissed";
 
   function hide() {
     if (btn.parentElement) {
@@ -62,7 +59,7 @@
     }
   }
 
-  if (!localStorage.getItem("banner-party-crasher")) {
+  if (!isBannerHidden) {
     btn.addEventListener("click", () => {
       hide();
       localStorage.setItem("banner-party-crasher", "dismissed");
