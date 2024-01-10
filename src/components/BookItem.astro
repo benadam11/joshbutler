@@ -4,9 +4,11 @@ const { id, title, description, postImage, options } = Astro.props;
 
 <section class="grid gap-10">
   <h4 id={id}>{title}</h4>
-  <figure>
-    <img src={postImage} />
-  </figure>
+  <a href={`/books/${id}`}>
+    <figure>
+      <img src={postImage} />
+      <figcaption class="mt-4">Learn More</figcaption>
+    </figure>
+  </a>
   <!-- <p>{description}</p> -->
-  <a href={`${Astro.url.origin}/books/${id}`}>Learn More</a>
 </section>

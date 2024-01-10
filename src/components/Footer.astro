@@ -20,7 +20,7 @@ import { books } from "../pages/books.astro";
             books.map((book) => {
               return (
                 <li>
-                  <a href={`/books#${book.id}`}>{book.title}</a>
+                  <a href={`/books/${book.id}`}>{book.title}</a>
                 </li>
               );
             })
