@@ -1,0 +1,21 @@
+---
+const { preorderLink, preorderBulkLink } = Astro.props;
+---
+
+<div>
+  <h4 class="mb-4 text-lg">Preorder</h4>
+  <div class="border p-8 grid gap-2">
+    <a
+      href={preorderLink}
+      class="btn flex items-center justify-center gap-2 bg-black text-white px-4 py-2 text-base font-semibold w-full disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-80"
+    >
+      Preorder
+    </a>
+    <a
+      href={preorderBulkLink}
+      class="btn flex items-center justify-center gap-2 border border-black text-black px-4 py-2 text-base font-semibold w-full disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-80"
+    >
+      Preorder In Bulk
+    </a>
+  </div>
+</div>

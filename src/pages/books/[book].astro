@@ -1,6 +1,8 @@
 ---
-import Download from "../../components/Download.astro";
+import DownloadLink from "../../components/DownloadLink.astro";
 import MyBooks from "../../components/MyBooks.astro";
+import Preorder from "../../components/Preorder.astro";
+import Resources from "../../components/Resources.astro";
 import Testimonials from "../../components/Testimonials.astro";
 import WhereToBuy from "../../components/WhereToBuy.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -24,6 +26,9 @@ const {
   otherBooks = [],
   pdf,
   trailer,
+  preorderLink,
+  preorderBulkLink,
+  resources
 } = Astro.props;
 ---
 
@@ -36,6 +41,7 @@ const {
         class="w-full sm:max-w-[350px] md:sticky top-0 self-start pt-10 mb-8"
       >
         <img src={featuredImage} alt={title} />
+        <DownloadLink pdf={pdf} />
       </figure>
       <div class="grid gap-12">
         <div>
@@ -46,23 +52,32 @@ const {
           <h4 class="text-lg mb-4">About</h4>
           <p>{description}</p>
         </div>
-        {pdf && <Download pdf={pdf} />}
+
         {
           trailer && (
             <div>
-            <h4 class="text-lg mb-4">Trailer</h4>
-            <iframe
-              width="560"
-              height="315"
-              src={trailer}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
+              <h4 class="text-lg mb-4">Trailer</h4>
+              <iframe
+                width="560"
+                height="315"
+                src={trailer}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+            </div>
+          )
+        }
+        {
+          preorderBulkLink && preorderLink && (
+            <Preorder
+              preorderBulkLink={preorderBulkLink}
+              preorderLink={preorderLink}
             />
-          </div>
           )
         }
         <WhereToBuy options={options} />
+        {resources?.length && <Resources resources={resources} />}
       </div>
     </div>
     {

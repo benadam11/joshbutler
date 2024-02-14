@@ -1,0 +1,18 @@
+---
+const { pdf, id, className } = Astro.props;
+---
+
+<button id={id} class={`btn ${className}`}>
+  <slot />
+</button>
+
+<script define:vars={{ pdf, id }}>
+  const btn = document.getElementById(id);
+  btn?.addEventListener("click", () => {
+    const downloadLink = document.createElement("a");
+    downloadLink.href = `/pdf/${pdf}`;
+    downloadLink.download = pdf;
+    downloadLink.target = "_blank";
+    downloadLink.click();
+  });
+</script>
