@@ -1,4 +1,5 @@
 ---
+import DocxIcon from "../components/DocxIcon.astro";
 import DownloadButton from "../components/DownloadButton.astro";
 import JPGIcon from "../components/JPGIcon.astro";
 import PDFIcon from "../components/PDFIcon.astro";
@@ -6,8 +7,6 @@ import ResourceContainer from "../components/ResourceContainer.astro";
 import Page from "../layouts/Page.astro";
 
 export const prerender = true;
-
-const preorderLink = "https://form.jotform.com/240134563753959";
 const preorderBulkLink = "https://form.jotform.com/240134881589969";
 ---
 
@@ -20,7 +19,7 @@ const preorderBulkLink = "https://form.jotform.com/240134881589969";
 >
   <div class="page-content">
     <section>
-      <p>
+      <p class="text-3xl italic">
         Interested in The Party Crasher as a resource for your church or
         ministry? Here's some resources to help equip your people to navigate
         the political division going into the next election season with maturity
@@ -34,9 +33,7 @@ const preorderBulkLink = "https://form.jotform.com/240134881589969";
         Crasher covers and how it can be used as a resource for your church or
         ministry.
       </p>
-      <div
-        class="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-4 mb-8"
-      >
+      <div class="grid gap-4 pt-8 mb-8">
         <iframe
           width="560"
           height="315"
@@ -101,44 +98,26 @@ const preorderBulkLink = "https://form.jotform.com/240134881589969";
       </p>
       <ResourceContainer>
         <div class="grid grid-cols-1 gap-4">
-          <DownloadButton href="/assets/Christian-Political-Commitment.pdf">
+          <DownloadButton
+            id="party-crasher-sermon-outlines-pdf"
+            pdf="party-crasher-sermon-outlines.pdf"
+          >
             <span
               class="text-base underline font-semibold flex items-center gap-2"
             >
               <PDFIcon />
-              Sermon Outline 1
+              party-crasher-sermon-outlines.pdf
             </span>
           </DownloadButton>
-          <DownloadButton href="/assets/Christian-Political-Commitment.pdf">
+          <DownloadButton
+            id="party-crasher-sermon-outlines-docx"
+            pdf="party-crasher-sermon-outlines.docx"
+          >
             <span
               class="text-base underline font-semibold flex items-center gap-2"
             >
-              <PDFIcon />
-              Sermon Outline 1
-            </span>
-          </DownloadButton>
-          <DownloadButton href="/assets/Christian-Political-Commitment.pdf">
-            <span
-              class="text-base underline font-semibold flex items-center gap-2"
-            >
-              <PDFIcon />
-              Sermon Outline 1
-            </span>
-          </DownloadButton>
-          <DownloadButton href="/assets/Christian-Political-Commitment.pdf">
-            <span
-              class="text-base underline font-semibold flex items-center gap-2"
-            >
-              <PDFIcon />
-              Sermon Outline 1
-            </span>
-          </DownloadButton>
-          <DownloadButton href="/assets/Christian-Political-Commitment.pdf">
-            <span
-              class="text-base underline font-semibold flex items-center gap-2"
-            >
-              <PDFIcon />
-              Sermon Outline 1
+              <DocxIcon />
+              party-crasher-sermon-outlines.docx
             </span>
           </DownloadButton>
         </div>
@@ -146,6 +125,11 @@ const preorderBulkLink = "https://form.jotform.com/240134881589969";
     </section>
     <section>
       <h4>Bulk Order Discount:</h4>
+      <p>
+        Are you purchasing multiple copies of The Party Crasher for your church,
+        organization, or group? Use this link to get the best price possible for
+        your order.
+      </p>
       <div class="border p-8 grid gap-2">
         <a
           href={preorderBulkLink}
