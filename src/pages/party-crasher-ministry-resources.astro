@@ -1,0 +1,163 @@
+---
+import DocxIcon from "../components/DocxIcon.astro";
+import DownloadButton from "../components/DownloadButton.astro";
+import JPGIcon from "../components/JPGIcon.astro";
+import PDFIcon from "../components/PDFIcon.astro";
+import ResourceContainer from "../components/ResourceContainer.astro";
+import Page from "../layouts/Page.astro";
+
+export const prerender = true;
+const preorderBulkLink = "https://form.jotform.com/240134881589969";
+---
+
+<Page
+  title="The Party Crasher"
+  subtitle="Ministry Resources"
+  description="Joshua Ryan Butler - Blog"
+  slug="blog"
+  post={true}
+>
+  <div class="page-content">
+    <section>
+      <p class="text-3xl italic">
+        Interested in The Party Crasher as a resource for your church or
+        ministry? Here's some resources to help equip your people to navigate
+        the political division going into the next election season with maturity
+        and faithfulness to Jesus.
+      </p>
+    </section>
+    <section>
+      <h4>Book Overiew</h4>
+      <p>
+        These three short videos give an overview of what ground The Party
+        Crasher covers and how it can be used as a resource for your church or
+        ministry.
+      </p>
+      <div class="grid gap-4 pt-8 mb-8">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/Smp-CSEeJSo?si=fTPwAitP0Pa8KB1L&controls=0"
+          title="Party Crasher Overview (1 of 3)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/Lm9fHI57VMU?si=x4QSBKSDUEgKWSxb&controls=0"
+          title="Party Crasher Overview (2 of 3)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/SWZDE7lDnwI?si=PvvzI5bQ7871Bp_f&controls=0"
+          title="Party Crasher Overview (3 of 3)"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section>
+      <h4>Christian Political Commitment:</h4>
+      <p>
+        This "Christian Political Commitment" (based on Chapters 4 and 5 of The
+        Party Crasher) is a resource you can ask your people to sign onto. It
+        helps provide clear biblical guidelines for how we can approach this
+        political season with faithfulness to Jesus as his followers.
+        (Downloadable as a pdf or jpg.)
+      </p>
+
+      <ResourceContainer>
+        <div class="grid grid-cols-1 gap-4">
+          <DownloadButton id="cpp-pdf" pdf="christian-political-pledge.pdf">
+            <span
+              class="text-base underline font-semibold flex items-center gap-2"
+            >
+              <PDFIcon />
+              a-christian-political-commitment.pdf
+            </span>
+          </DownloadButton>
+          <DownloadButton id="cpp-jpg" pdf="christian-political-pledge.jpg">
+            <span
+              class="text-base underline font-semibold flex items-center gap-2"
+            >
+              <JPGIcon />
+              a-christian-political-commitment.jpg
+            </span>
+          </DownloadButton>
+        </div>
+      </ResourceContainer>
+    </section>
+
+    <section>
+      <h4>Sermon Outlines:</h4>
+      <p>
+        Here's how I would approach a sermon series based on The Party Crasher.
+        Feel free to take them, tweak them, and make them your own!
+      </p>
+      <ResourceContainer>
+        <div class="grid grid-cols-1 gap-4">
+          <DownloadButton
+            id="party-crasher-sermon-outlines-pdf"
+            pdf="party-crasher-sermon-outlines.pdf"
+          >
+            <span
+              class="text-base underline font-semibold flex items-center gap-2"
+            >
+              <PDFIcon />
+              party-crasher-sermon-outlines.pdf
+            </span>
+          </DownloadButton>
+          <DownloadButton
+            id="party-crasher-sermon-outlines-docx"
+            pdf="party-crasher-sermon-outlines.docx"
+          >
+            <span
+              class="text-base underline font-semibold flex items-center gap-2"
+            >
+              <DocxIcon />
+              party-crasher-sermon-outlines.docx
+            </span>
+          </DownloadButton>
+        </div>
+      </ResourceContainer>
+    </section>
+    <section>
+      <h4>Bulk Order Discount:</h4>
+      <p>
+        Are you purchasing multiple copies of The Party Crasher for your church,
+        organization, or group? Use this link to get the best price possible for
+        your order.
+      </p>
+      <div class="border p-8 grid gap-2">
+        <a
+          href={preorderBulkLink}
+          class="btn flex items-center justify-center gap-2 bg-black text-white px-4 py-2 text-base font-semibold w-full disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-80 !no-underline"
+        >
+          Preorder In Bulk
+        </a>
+      </div>
+    </section>
+  </div>
+</Page>
+
+<style is:global>
+  .header,
+  .aside,
+  .page-content {
+    @apply min-w-[0px] w-full max-w-[780px] mx-auto;
+  }
+
+  .page-content h4 {
+    @apply text-2xl font-bold my-8;
+  }
+
+  .page-content fieldset {
+    @apply my-8;
+  }
+
+  .page-content p {
+    @apply mb-8;
+  }
+</style>

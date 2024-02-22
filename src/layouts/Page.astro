@@ -6,6 +6,7 @@ export interface Props {
   description: string;
   slug: string;
   post?: boolean;
+  subtitle?: string;
 }
 
 const title = Astro.props?.title || "Untitled";
@@ -13,6 +14,7 @@ const date = Astro.props?.date;
 const description = Astro.props?.description || "No description";
 const slug = Astro.props?.slug;
 const post = Astro.props?.post;
+const subtitle = Astro.props?.subtitle;
 ---
 
 <Layout title={title} description={description} slug={slug}>
@@ -27,6 +29,7 @@ const post = Astro.props?.post;
       )
     }
     <h1 class="text-3xl md:text-4xl">{title}</h1>
+    {subtitle && <p class="text-lg mt-4 font-bold italic">{subtitle}</p>}
   </div>
   <div
     class={`grid ${
