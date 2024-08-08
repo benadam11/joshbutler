@@ -1,7 +1,6 @@
 ---
 import DocxIcon from "../components/DocxIcon.astro";
 import DownloadButton from "../components/DownloadButton.astro";
-import JPGIcon from "../components/JPGIcon.astro";
 import PDFIcon from "../components/PDFIcon.astro";
 import ResourceContainer from "../components/ResourceContainer.astro";
 import Page from "../layouts/Page.astro";
@@ -44,6 +43,7 @@ const preorderBulkLink = "https://form.jotform.com/240134881589969";
               party-crasher-bible-study.pdf
             </span>
           </DownloadButton>
+          
         </div>
       </ResourceContainer>
     </section>
@@ -68,12 +68,44 @@ const preorderBulkLink = "https://form.jotform.com/240134881589969";
               a-christian-political-commitment.pdf
             </span>
           </DownloadButton>
-          <DownloadButton id="cpp-jpg" pdf="christian-political-pledge.jpg">
+        </div>
+      </ResourceContainer>
+    </section>
+
+    <section>
+      <h4>Conversation Starter Cards:</h4>
+      <p>
+        Use these conversation starter cards to catalyze meaningful and constructive conversations based on the book.
+      </p>
+
+      <ResourceContainer>
+        <div class="grid grid-cols-1 gap-4">
+          <DownloadButton id="pccc-pdf" pdf="party_crasher_conversation_cards.pdf">
             <span
               class="text-base underline font-semibold flex items-center gap-2"
             >
-              <JPGIcon />
-              a-christian-political-commitment.jpg
+              <PDFIcon />
+              party_crasher_conversation_cards.pdf
+            </span>
+          </DownloadButton>
+        </div>
+      </ResourceContainer>
+    </section>
+
+    <section>
+      <h4>Study Guide:</h4>
+      <p>
+        Use this study guide for personal reflection and group discussion based on the book. 
+      </p>
+
+      <ResourceContainer>
+        <div class="grid grid-cols-1 gap-4">
+          <DownloadButton id="pcsg-pdf" pdf="party_crasher_study_guide.pdf">
+            <span
+              class="text-base underline font-semibold flex items-center gap-2"
+            >
+              <PDFIcon />
+              party_crasher_study_guide.pdf
             </span>
           </DownloadButton>
         </div>
