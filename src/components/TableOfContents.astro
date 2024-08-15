@@ -8,7 +8,7 @@ const { links, title } = Astro.props;
     {
       links.map(({ id, title }: { id: string; title: string }) => (
         <li>
-          <a class="text-xl underline" href={`${Astro.url.origin}/books/${id}`}>
+          <a class="text-xl underline" href={`/books/${id}`}>
             {title}
           </a>
         </li>
