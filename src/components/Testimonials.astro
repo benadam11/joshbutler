@@ -7,10 +7,12 @@ interface Testimonial {
 }
 import TestimonialCard from "./TestimonialCard.astro";
 const { testimonials, title } = Astro.props;
+const hasTestimonials = testimonials && testimonials.length > 0;
 ---
 
-<div class="py-[120px]">
-  <header class="text-center mb-10">
+<div class={hasTestimonials ? "py-[120px]" : "pt-[120px]"}>
+  {hasTestimonials && (
+    <header class="text-center mb-10">
     <h5 class="font-sans text-[22px] mb-4">Testimonials</h5>
     <p class="text-[18px]">
       Love for <b class="font-bold">{title}</b> from leading voices.
@@ -29,4 +31,5 @@ const { testimonials, title } = Astro.props;
       }
     </ul>
   </div>
+  )}
 </div>

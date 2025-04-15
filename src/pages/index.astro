@@ -26,13 +26,11 @@ const description =
       <Callout />
     </section>
     <section class="outer-container">
-        {testimonials?.length > 0 && (
-        <Testimonials
-          testimonials={testimonials?.slice(0, 2)}
-          title={books[0].title}
-        />
-      )}
-      </section>
+      <Testimonials
+        testimonials={testimonials?.slice(0, 2)}
+        title={books[0].title}
+      />
+    </section>
     <MyBooks books={books} />
     <section class="py-[140px] grid md:grid-cols-2 gap-20 outer-container">
       <RecentPosts posts={recentPosts} />
