@@ -20,4 +20,4 @@ A few weird facts about me:
 - I've been run over by a VW van.
 - I ate a dog (don't worry, it was cooked).
 
-I hope you enjoy the site! Make yourself at home, stay as long as you like, help yourself to anything in the fridge . . . and hit me up on [Instagram](https://www.instagram.com/joshuabutlerphx) (@joshuabutlerphx) if you enjoy your stay!
+I hope you enjoy the site! Make yourself at home, stay as long as you like, help yourself to anything in the fridge . . . and hit me up on [Instagram](https://www.instagram.com/joshuabutlerpdx) (@joshuabutlerpdx) if you enjoy your stay!
