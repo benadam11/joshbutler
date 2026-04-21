@@ -1,13 +1,15 @@
----
-import EmailSignup from "./InlineEmailSignup.astro";
----
-
 <div class="grid gap-8">
-  <h4>Newsletter</h4>
-  <div class="email-signup-wrapper">
+  <h4>Substack</h4>
+  <div>
     <p class="text-xl mb-4">
       Get early previews of some of my posts and book content.
     </p>
-    <EmailSignup />
+    <a
+      href="https://joshuabutlerpdx.substack.com/subscribe"
+      target="_blank"
+      class="inline-block px-6 py-3 border border-black rounded-full text-base font-bold hover:bg-black hover:text-white transition-colors"
+    >
+      Subscribe
+    </a>
   </div>
 </div>

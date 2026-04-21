@@ -1,7 +1,3 @@
----
-import EmailSignup from "./InlineEmailSignup.astro";
----
-
 <div class="mt-20">
   <h4 class="mb-20">My Latest Book:</h4>
   <article id="latest-work" class="bg-[var(--light-orange)] p-8 md:p-20 rounded-xl md:rounded-3xl w-full grid md:grid-cols-[1fr_350px] gap-20">
@@ -11,14 +7,20 @@ import EmailSignup from "./InlineEmailSignup.astro";
           <b>God Is On Your Side</b>
         </h3>
         <p class="text-xl">
-          You don’t have to win God’s love. God has come to win yours. Even in your darkest moments, he
+          You don't have to win God's love. God has come to win yours. Even in your darkest moments, he
 pursues you to shape you and draw you close. Come encounter the hope-filled radiant love of the
 God who is always on your side.
         </p>
       </div>
-      <div class="grid mt-6 email-signup-wrapper">
-        <p class="text-lg mb-4">Get <b>updates</b> by joining my newsletter</p>
-        <EmailSignup />
+      <div class="grid mt-6">
+        <p class="text-lg mb-4">Get <b>updates</b> by joining my Substack</p>
+        <a
+          href="https://joshuabutlerpdx.substack.com/subscribe"
+          target="_blank"
+          class="inline-block px-6 py-3 border border-black rounded-full text-base font-bold hover:bg-black hover:text-white transition-colors w-fit"
+        >
+          Subscribe
+        </a>
       </div>
     </div>
     <figure>
