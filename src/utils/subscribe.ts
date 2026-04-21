@@ -1,21 +1,22 @@
-export async function subscribe(email: string, apiKey: string) {
-  const subscriberHash = await crypto.subtle.digest(
-    "md5",
-    new TextEncoder().encode(email.toLowerCase())
-  );
-
-  const headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  headers.append("Authorization", `Bearer ${apiKey}`);
-  await fetch(
-    `https://us9.api.mailchimp.com/3.0/lists/0a3dcfa066/members/${subscriberHash}?skip_merge_validation=true`,
+export async function subscribe(email: string) {
+  const response = await fetch(
+    "https://joshuabutlerpdx.substack.com/api/v1/free",
     {
-      method: "PUT",
-      headers,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        email_address: email,
-        status: "subscribed",
+        email,
+        captcha_response: "",
+        first_url: "",
+        referrer: "",
       }),
     }
   );
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Substack subscription failed: ${response.status} ${text}`);
+  }
 }

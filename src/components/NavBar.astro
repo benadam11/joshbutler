@@ -7,7 +7,7 @@
     <a class="nav-link" href="/books">Books</a>
     <a class="nav-link" href="/speaking">Speaking</a>
     <a class="nav-link" href="/party-crasher-ministry-resources">Resources</a>
-    <a class="nav-link" href="/blog">Blog</a>
+    <a class="nav-link" href="https://joshuabutlerpdx.substack.com" target="_blank" rel="noopener noreferrer">Blog</a>
   </div>
   <div class="relative md:hidden">
     <label for="menu" class="font-sans text-base">Menu</label>
@@ -17,7 +17,7 @@
       <a class="nav-link" href="/books">Books</a>
       <a class="nav-link" href="/speaking">Speaking</a>
       <a class="nav-link" href="/party-crasher-ministry-resources">Resources</a>
-      <a class="nav-link" href="/blog">Blog</a>
+      <a class="nav-link" href="https://joshuabutlerpdx.substack.com" target="_blank" rel="noopener noreferrer">Blog</a>
     </div>
   </div>
 </nav>
@@ -69,7 +69,8 @@
 <script is:inline>
   document.querySelectorAll(".nav-link").forEach((link) => {
     const { pathname } = window.location;
-    const { pathname: path } = link;
+    const { pathname: path, host } = link;
+    if (host !== window.location.host) return;
     if (path === pathname || (path.length > 1 && pathname.includes(path))) {
       link.classList.add("active");
     }

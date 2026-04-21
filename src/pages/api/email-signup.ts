@@ -1,5 +1,4 @@
 import type { APIRoute } from "astro";
-import { getRuntime } from "@astrojs/cloudflare/runtime";
 import { subscribe } from "../../utils/subscribe";
 
 export const post: APIRoute = async ({ request }) => {
@@ -8,9 +7,7 @@ export const post: APIRoute = async ({ request }) => {
   ) {
     const data = await request.formData();
     const email = data.get("email") as string;
-    const cf = getRuntime<{ MAILCHIMP_API_KEY: string }, {}>(request);
-    const apiKey = cf.env.MAILCHIMP_API_KEY;
-    await subscribe(email, apiKey);
+    await subscribe(email);
     return new Response(null, {
       status: 302,
       headers: {
